@@ -293,6 +293,12 @@ table.refund td:last-child{text-align:right;font-family:var(--mono);font-weight:
 table.refund tr:last-child td{border-bottom:0}
 
 /* guide */
+.process{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.process li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.process .pn{font-family:var(--display);font-weight:900;font-size:24px;line-height:1.2;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.process h3{font-family:var(--body);font-weight:700;font-size:16px;margin:2px 0 6px}
+.process p{margin:0;color:var(--muted);font-size:14.5px}
+@media (max-width:520px){.process li{grid-template-columns:44px minmax(0,1fr);padding:18px}.process .pn{font-size:20px}}
 .flow{display:grid;gap:16px}
 .track{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
 .track h3{font-size:18px;margin-bottom:16px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
@@ -495,12 +501,12 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
   <section>
     <div class="wrap">
       <div class="sec-head"><div><span class="eyebrow">Guide</span><h2>의뢰 가이드</h2><p>문의부터 전달까지의 순서예요. 진행 중에도 수정 사항은 언제든 말씀해 주세요.</p></div></div>
-      <div class="flow">
-        <div class="track"><h3>작곡 · 편곡 <span class="eyebrow">Original / BGM / Arrange</span></h3>
-          <ol class="steps"><li>문의</li><li>상담 후 일정 안내</li><li>결제</li><li>작업 시작</li><li class="opt">러프 전달 (생략 가능)</li><li>1차 컨펌</li><li>2차 컨펌</li><li>마무리 작업</li><li>전달</li></ol></div>
-        <div class="track"><h3>에디팅 · 믹싱 · 마스터링 <span class="eyebrow">Vocal Mix</span></h3>
-          <ol class="steps"><li>문의</li><li>녹음 소스 · Inst 확인</li><li>작업 가능 여부 · 일정 안내</li><li>결제</li><li>작업 시작</li><li>1차 컨펌</li><li>2차 컨펌</li><li>마무리 작업</li><li>전달</li></ol></div>
-      </div>
+      <ol class="process">
+        <li><span class="pn">01</span><div><h3>문의</h3><p>디스코드나 이메일로 문의 양식을 보내주세요. 원하시는 작업을 간단히 알려주셔도 괜찮아요.</p></div></li>
+        <li><span class="pn">02</span><div><h3>확인 · 견적</h3><p>곡과 레퍼런스(믹싱은 녹음 소스와 Inst)를 보고 작업 범위와 금액, 일정을 안내드려요.</p></div></li>
+        <li><span class="pn">03</span><div><h3>결제 · 작업</h3><p>결제 후 작업을 시작하고, 중간 결과물로 1차 · 2차 컨펌을 진행해요.</p></div></li>
+        <li><span class="pn">04</span><div><h3>마무리 · 전달</h3><p>수정 사항을 반영해 마무리하고 완성본을 전달해요.</p></div></li>
+      </ol>
       <div class="facts">
         <div class="fact"><div class="k">Turnaround</div><div class="v">3~5일</div><p>평균 기준이며 길어도 10일 내외. 마감일에 최대한 맞춰 드려요.</p></div>
         <div class="fact"><div class="k">Delivery</div><div class="v mono" style="font-size:20px">WAV 48k/24bit</div><p>요청하시면 MP3도 함께 보내드려요.</p></div>
@@ -531,7 +537,6 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
         <span class="eyebrow">Notes</span><h3 style="margin-top:6px">안내 사항</h3>
         <ul class="policy">
           <li>모든 작업물은 포트폴리오로 사용될 수 있어요. 투고 후 링크를 보내 주시면 감사하겠습니다.</li>
-          <li>러프와 1 · 2차 작업물은 아트머그나 디스코드로 전달합니다. 디테일한 컨펌이 필요하면 디스코드를 선호해요.</li>
           <li>외주 작업은 편하게 문의 주세요.</li>
         </ul>
       </div>
