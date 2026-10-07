@@ -264,6 +264,29 @@ section{padding-block:56px}
 .vm-nav button:hover:not(:disabled){border-color:var(--accent)}
 .vm-nav button:disabled{opacity:.35;cursor:default}
 @media (max-width:560px){.vm-head,.vm-foot{padding-inline:18px}}
+/* pricing tabs */
+.ptabs-wrap{margin-bottom:28px}
+.ptabs-label{margin:0 0 12px;font-size:13.5px;color:var(--muted)}
+.ptabs-label b{color:var(--ink);font-size:15px;margin-right:8px}
+.ptabs{display:flex;flex-wrap:wrap;gap:10px}
+.ptab{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 15px var(--body);cursor:pointer;transition:border-color .2s,transform .2s}
+.ptab:hover{border-color:var(--accent)}
+.ptab .pn{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.ptab .pc{min-width:22px;height:22px;padding:0 6px;border-radius:999px;display:inline-grid;place-items:center;font-size:12px;background:var(--sunk);color:var(--muted);font-variant-numeric:tabular-nums}
+.ptab[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:var(--on-accent);box-shadow:0 10px 24px -12px color-mix(in srgb,var(--accent) 70%,transparent)}
+.ptab[aria-pressed="true"] .pn{color:color-mix(in srgb,#fff 80%,transparent)}
+.ptab[aria-pressed="true"] .pc{background:color-mix(in srgb,#fff 25%,transparent);color:#fff}
+.pcat-head{margin-bottom:18px}
+.pcat-head h3{font-size:22px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pcat-head h3 span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--muted)}
+.pcat-head p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
+.price-grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.price-grid.c1{grid-template-columns:minmax(0,560px)}
+@media (max-width:560px){.price-grid.c2{grid-template-columns:1fr}.price-grid.c1{grid-template-columns:1fr}}
+.pask{margin:24px 0 0;color:var(--muted);font-size:14.5px}
+.pask a{color:var(--accent-ink);font-weight:700;text-decoration:none;margin-left:6px}
+.lesson-chips span{font-size:13px;padding:5px 12px}
+@media (max-width:560px){.ptab{padding:10px 13px;font-size:14px}}
 /* pricing */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .price{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
@@ -488,22 +511,51 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
   <section>
     <div class="wrap">
       <div class="sec-head"><div><span class="eyebrow">Pricing</span><h2>외주 단가</h2><p>모든 금액은 비상업 · 방송 활동 기준 기본가예요. 곡 길이와 난이도에 따라 상담 후 최종 견적을 안내드려요.</p></div></div>
-      <div class="price-grid">
+      <div class="ptabs-wrap"><p class="ptabs-label"><b>분야 선택</b> 눌러서 분야별 단가를 확인하세요</p>
+      <div class="ptabs" role="group" aria-label="단가 분야">
+        <button class="ptab" data-pcat="orig" aria-pressed="true"><span class="pn">01</span>오리지널 · BGM<span class="pc">4</span></button>
+        <button class="ptab" data-pcat="inst" aria-pressed="false"><span class="pn">02</span>Inst · 편곡<span class="pc">2</span></button>
+        <button class="ptab" data-pcat="vocal" aria-pressed="false"><span class="pn">03</span>보컬 믹싱 · 화음<span class="pc">2</span></button>
+        <button class="ptab" data-pcat="sfx" aria-pressed="false"><span class="pn">04</span>후원 효과음<span class="pc">1</span></button>
+        <button class="ptab" data-pcat="lesson" aria-pressed="false"><span class="pn">05</span>레슨<span class="pc">1</span></button>
+      </div></div>
+      <div class="pcat" data-pcat="orig">
+        <div class="pcat-head"><h3>오리지널 · BGM<span>Original · BGM</span></h3><p>오리지널 곡부터 방송용 BGM, 인트로, PV 음악까지 새로 만드는 작업이에요.</p></div>
+        <div class="price-grid c2">
         <article class="price"><div class="top"><span class="tag t-original">ORIGINAL SONG</span></div><h3>오리지널 곡 제작</h3><p class="sub">2~4분 내외 풀사이즈 오리지널 곡</p><div class="amount">₩500,000<small>부터</small></div><ul class="opts"><li><span>풀사이즈 오리지널 곡 제작 (2~4분)</span><b>500,000</b></li><li><span>작곡 + 보컬 박자·음정 보정 + 탑라인 + 믹싱 + 마스터링 풀패키지</span><b>660,000</b></li><li><span>작곡이 진행된 오리지널 곡에 편곡 (상업적 라이선스 포함)</span><b>1,000,000</b></li></ul></article>
         <article class="price"><div class="top"><span class="tag t-sig">SIGNATURE BGM</span></div><h3>방송용 시그니처 BGM</h3><p class="sub">저챗 · 대기화면 · 로딩화면용 Loop BGM</p><div class="amount">₩140,000<small>부터</small></div><ul class="opts"><li><span>1분 길이 방송용 Loop BGM</span><b>140,000</b></li><li><span>2분 길이 방송용 Loop BGM</span><b>180,000</b></li></ul></article>
         <article class="price"><div class="top"><span class="tag t-intro">INTRO · OUTRO</span></div><h3>인트로 · 아웃트로 BGM</h3><p class="sub">유튜브 인트로 · 아웃트로 (Loop) 사운드</p><div class="amount">₩50,000<small>3~7초 내외</small></div><p class="pnote">리액션 인트로, 포즈 트랜지션 등 짧은 영상용 사운드.</p></article>
         <article class="price"><div class="top"><span class="tag t-pv">PV · TEASER</span></div><h3>PV BGM</h3><p class="sub">데뷔 PV · 티저 영상용 BGM</p><div class="amount">₩90,000<small>45초 내외</small></div><p class="pnote">영상 컷 타이밍에 맞춰 작곡해요.</p></article>
-        <article class="price"><div class="top"><span class="tag t-arr">INST</span></div><h3>Inst 제작</h3><p class="sub">커버곡 MR · 어레인지 (곡 길이 3분 내외 기준)</p><div class="amount">₩260,000<small>부터</small></div><ul class="opts"><li><span>원하는 분위기 · 장르로 어레인지</span><b>260,000</b></li><li><span>원곡 퀄리티 그대로 인스트 제작</span><b>290,000</b></li><li class="addon"><span>+ 리얼 기타 세션 추가</span><b>150,000 내외</b></li></ul></article>
-        <article class="price"><div class="top"><span class="tag t-mix">VOCAL MIX</span></div><h3>보컬 믹싱</h3><p class="sub">에디팅 · 믹싱 · 마스터링</p><div class="amount">₩80,000<small>1인 기준</small></div><ul class="opts"><li><span>1인 믹싱 + 마스터링 (에디팅 포함)</span><b>80,000</b></li><li><span>2인 믹싱 + 마스터링 (에디팅 포함)</span><b>110,000</b></li><li><span>3인 믹싱 + 마스터링 (에디팅 포함)</span><b>135,000</b></li><li><span>후렴 치기 (에디팅 포함)</span><b>45,000</b></li><li><span>1절 치기 (에디팅 포함)</span><b>55,000</b></li><li><span>믹싱 + 마스터링만, 에디팅 제외 · 1인</span><b>37,000</b></li><li><span>음정 · 박자 보정(에디팅)만 · 1인 · 기존 고객</span><b>35,000</b></li></ul></article>
+        </div>
       </div>
-
-      <div class="sub-head"><span class="eyebrow">Extras</span><h3>추가 작업 · 소형 상품</h3><p>단독으로 의뢰하거나 다른 작업에 함께 추가할 수 있어요.</p></div>
-      <div class="price-grid">
+      <div class="pcat" data-pcat="inst" hidden>
+        <div class="pcat-head"><h3>Inst · 편곡<span>Inst · Arrange</span></h3><p>커버곡 MR을 새로 편곡하거나 원곡 그대로 만들고, 악보도 제작해요.</p></div>
+        <div class="price-grid c2">
+        <article class="price"><div class="top"><span class="tag t-arr">INST</span></div><h3>Inst 제작</h3><p class="sub">커버곡 MR · 어레인지 (곡 길이 3분 내외 기준)</p><div class="amount">₩260,000<small>부터</small></div><ul class="opts"><li><span>원하는 분위기 · 장르로 어레인지</span><b>260,000</b></li><li><span>원곡 퀄리티 그대로 인스트 제작</span><b>290,000</b></li><li class="addon"><span>+ 리얼 기타 세션 추가</span><b>150,000 내외</b></li></ul></article>
+        <article class="price"><div class="top"><span class="tag t-cover">SCORE</span></div><h3>악보 제작</h3><p class="sub">악보 · 리드시트</p><div class="amount">₩30,000<small>1곡 기준</small></div><p class="pnote">세션 연주, 라이브 공연, 합주용 악보가 필요할 때 함께 의뢰할 수 있어요.</p></article>
+        </div>
+      </div>
+      <div class="pcat" data-pcat="vocal" hidden>
+        <div class="pcat-head"><h3>보컬 믹싱 · 화음<span>Vocal Mix · Harmony</span></h3><p>녹음본 에디팅부터 믹싱 · 마스터링, 화음 가이드까지 보컬 작업이에요.</p></div>
+        <div class="price-grid c2">
+        <article class="price"><div class="top"><span class="tag t-mix">VOCAL MIX</span></div><h3>보컬 믹싱</h3><p class="sub">에디팅 · 믹싱 · 마스터링</p><div class="amount">₩80,000<small>1인 기준</small></div><ul class="opts"><li><span>1인 믹싱 + 마스터링 (에디팅 포함)</span><b>80,000</b></li><li><span>2인 믹싱 + 마스터링 (에디팅 포함)</span><b>110,000</b></li><li><span>3인 믹싱 + 마스터링 (에디팅 포함)</span><b>135,000</b></li><li><span>후렴 치기 (에디팅 포함)</span><b>45,000</b></li><li><span>1절 치기 (에디팅 포함)</span><b>55,000</b></li><li><span>믹싱 + 마스터링만, 에디팅 제외 · 1인</span><b>37,000</b></li><li><span>음정 · 박자 보정(에디팅)만 · 1인 · 기존 고객</span><b>35,000</b></li></ul></article>
+        <article class="price"><div class="top"><span class="tag t-mix">HARMONY</span></div><h3>화음 · 코러스</h3><p class="sub">커버곡 화음 제작과 화음 가이드</p><div class="amount">₩25,000<small>부터</small></div><ul class="opts"><li><span>인공화음 · 메인보컬 녹음본 소스로 제작</span><b>25,000</b></li><li><span>화음 가이드 · 원곡 메인보컬 소스 활용</span><b>35,000</b></li><li><span>화음 가이드 · 보컬로이드 활용 (가사 포함)</span><b>55,000</b></li></ul></article>
+        </div>
+      </div>
+      <div class="pcat" data-pcat="sfx" hidden>
+        <div class="pcat-head"><h3>후원 효과음<span>Donation SFX</span></h3><p>방송 후원 알림에 쓰는 짧은 효과음과 보이스예요.</p></div>
+        <div class="price-grid c1">
         <article class="price"><div class="top"><span class="tag t-intro">DONATION SFX</span></div><h3>후원 효과음</h3><p class="sub">방송 후원 알림용 효과음 · 보이스</p><div class="amount">₩10,000<small>부터</small></div><ul class="opts"><li><span>1~3초 후원 효과음 + 대사 음정 멜로디 제작 · 녹음</span><b>10,000</b></li></ul>
           <div class="collab"><span class="collab-tag">COLLAB SET</span><b>아기쥐작업소 × 마츠토키</b><p>후원 애니메이션 + 효과음 + 보이스를 한 번에 챙겨가는 나만의 시그니처 후원 세트</p><span class="collab-price">165,000</span></div></article>
-        <article class="price"><div class="top"><span class="tag t-mix">HARMONY</span></div><h3>화음 · 코러스</h3><p class="sub">커버곡 화음 제작과 화음 가이드</p><div class="amount">₩25,000<small>부터</small></div><ul class="opts"><li><span>인공화음 · 메인보컬 녹음본 소스로 제작</span><b>25,000</b></li><li><span>화음 가이드 · 원곡 메인보컬 소스 활용</span><b>35,000</b></li><li><span>화음 가이드 · 보컬로이드 활용 (가사 포함)</span><b>55,000</b></li></ul></article>
-        <article class="price"><div class="top"><span class="tag t-cover">SCORE</span></div><h3>악보 제작</h3><p class="sub">악보 · 리드시트</p><div class="amount">₩30,000<small>1곡 기준</small></div><p class="pnote">세션 연주, 라이브 공연, 합주용 악보가 필요할 때 함께 의뢰할 수 있어요.</p></article>
+        </div>
       </div>
+      <div class="pcat" data-pcat="lesson" hidden>
+        <div class="pcat-head"><h3>레슨<span>Lesson</span></h3><p>작곡 · 편곡 · 믹싱을 직접 배우고 싶은 분을 위한 1:1 수업이에요.</p></div>
+        <div class="price-grid c1">
+        <article class="price"><div class="top"><span class="tag t-guide">LESSON</span></div><h3>작 · 편곡 1:1 강의</h3><p class="sub">주 4회 · 회당 1시간 30분 · 온라인 수업</p><div class="amount">₩200,000</div><div class="vn-chips lesson-chips"><span>작곡</span><span>편곡</span><span>탑라인 제작</span><span>기초 보컬 믹싱</span></div><p class="pnote">배우고 싶은 분야와 수준에 맞춰 커리큘럼을 짜드려요.</p></article>
+        </div>
+      </div>
+      <p class="pask">찾는 작업이 없거나 조합이 궁금하시면 편하게 물어보세요. <a href="#contact" data-go="contact">문의하기 →</a></p>
 
       <div class="panel rush">
         <div><span class="eyebrow">Rush Option</span><h3 style="margin-top:6px">빠른 마감</h3><p><b style="color:var(--ink)">1~2일 이내</b> 마감이 필요할 때 선택하는 옵션이에요. 가능 여부는 일정 확인 후 안내드려요.</p></div>
@@ -850,6 +902,11 @@ document.addEventListener("keydown",e=>{if(document.getElementById("vmodal").hid
  if(e.key==="Escape")mvClose();
  if(e.key==="ArrowLeft"&&MV.i>0){MV.i--;mvRender();}
  if(e.key==="ArrowRight"&&MV.i<MV.list.length-1){MV.i++;mvRender();}});
+
+/* pricing tabs */
+document.addEventListener("click",e=>{const b=e.target.closest(".ptab");if(!b)return;const k=b.dataset.pcat;
+ document.querySelectorAll(".ptab").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+ document.querySelectorAll(".pcat").forEach(x=>x.hidden=x.dataset.pcat!==k);});
 
 /* copy */
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;
