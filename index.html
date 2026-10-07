@@ -578,7 +578,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
         <div class="pcat-head"><h3>오리지널 · BGM<span>Original · BGM</span></h3><p>오리지널 곡부터 방송용 BGM, 인트로, PV 음악까지 새로 만드는 작업이에요.</p></div>
         <div class="price-grid c2">
         <article class="price"><div class="top"><span class="tag t-original">ORIGINAL SONG</span></div><h3>오리지널 곡 제작</h3><p class="sub">2~4분 내외 풀사이즈 오리지널 곡</p><div class="amount">₩500,000<small>부터</small></div><ul class="opts"><li><span>풀사이즈 오리지널 곡 제작 (2~4분)</span><b>500,000</b></li><li><span>작곡이 진행된 오리지널 곡에 편곡 (상업적 라이선스 포함)</span><b>1,000,000</b></li></ul><a class="pkg-link" href="#packages">믹싱 · 마스터링까지 한 번에? <b>풀패키지 660,000 →</b></a></article>
-        <article class="price"><div class="top"><span class="tag t-sig">SIGNATURE BGM</span></div><h3>방송용 시그니처 BGM</h3><p class="sub">저챗 · 대기화면 · 로딩화면용 Loop BGM</p><div class="amount">₩140,000<small>부터</small></div><ul class="opts"><li><span>1분 길이 방송용 Loop BGM</span><b>140,000</b></li><li><span>2분 길이 방송용 Loop BGM</span><b>180,000</b></li></ul></article>
+        <article class="price"><div class="top"><span class="tag t-sig">SIGNATURE BGM</span></div><h3>방송용 BGM</h3><p class="sub">저챗 · 대기화면 · 로딩화면용 Loop BGM</p><div class="amount">₩140,000<small>부터</small></div><ul class="opts"><li><span>1분 길이 방송용 Loop BGM</span><b>140,000</b></li><li><span>2분 길이 방송용 Loop BGM</span><b>180,000</b></li></ul></article>
         <article class="price"><div class="top"><span class="tag t-intro">INTRO · OUTRO</span></div><h3>인트로 · 아웃트로 BGM</h3><p class="sub">유튜브 인트로 · 아웃트로 (Loop) 사운드</p><div class="amount">₩50,000<small>3~7초 내외</small></div><p class="pnote">리액션 인트로, 포즈 트랜지션 등 짧은 영상용 사운드.</p></article>
         <article class="price"><div class="top"><span class="tag t-pv">PV · TEASER</span></div><h3>PV BGM</h3><p class="sub">데뷔 PV · 티저 영상용 BGM</p><div class="amount">₩90,000<small>45초 내외</small></div><p class="pnote">영상 컷 타이밍에 맞춰 작곡해요.</p></article>
         </div>
@@ -916,7 +916,7 @@ const W=[
  ["dnDU1CL2_dM","당신의 연인이 되고 싶어 🍫 (貴方の恋人になりたい)","시로이 삐요 × 버찌 COVER","mix"],
  ["ddlyawZLIQU","할로윈🎃 주문을 외울게 — M2U & CLS","마리엘 × 모푸 COVER","mix"],
 ];
-const CAT={original:["오리지널","t-original"],arr:["편곡 · 리믹스","t-arr"],mix:["보컬 믹스","t-mix"],sig:["시그니처 BGM","t-sig"],intro:["인트로 · 아웃트로","t-intro"],pv:["PV · 티저","t-pv"],guide:["Guide / Vocal Direct","t-guide"],sfx:["후원 효과음","t-sfx"],remix:["Remix (개인작)","t-remix"]};
+const CAT={original:["오리지널","t-original"],arr:["편곡 · 리믹스","t-arr"],mix:["보컬 믹스","t-mix"],sig:["방송용 BGM","t-sig"],intro:["인트로 · 아웃트로","t-intro"],pv:["PV · 티저","t-pv"],guide:["Guide / Vocal Direct","t-guide"],sfx:["후원 효과음","t-sfx"],remix:["Remix (개인작)","t-remix"]};
 const url=w=>w[4]?`https://www.youtube.com/shorts/${w[0]}`:`https://youtu.be/${w[0]}`;
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
