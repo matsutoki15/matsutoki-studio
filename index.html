@@ -613,7 +613,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
       <div class="pkgs" id="packages">
         <div class="pcat-head"><span class="eyebrow">Packages</span><h3>패키지<span>Packages</span></h3><p>자주 함께 맡기시는 작업을 묶었어요. 눌러서 구성을 확인하세요.</p></div>
         <div class="pkg-grid">
-          <button class="pkg" data-pkg="orig"><span class="pkg-k"><i>PKG 01</i>Original</span><b>오리지널 풀패키지</b><p>작곡부터 보컬 보정, 탑라인, 믹싱 · 마스터링까지 한 번에</p><div class="pkg-price">₩660,000<small>부터</small></div><em>구성 보기 →</em></button>
+          <button class="pkg" data-pkg="orig"><span class="pkg-k"><i>PKG 01</i>Original</span><b>오리지널 풀패키지</b><p>작곡부터 탑라인, 화음 가이드, 보컬 보정, 믹싱 · 마스터링까지 한 번에</p><div class="pkg-price">₩660,000<small>부터</small></div><em>구성 보기 →</em></button>
           <button class="pkg" data-pkg="cover"><span class="pkg-k"><i>PKG 02</i>Cover</span><b>커버곡 Inst + 믹싱 · 마스터링</b><p>커버곡 MR 제작부터 보컬 믹싱 · 마스터링까지 한 번에</p><div class="pkg-price">₩345,000<small>부터</small></div><em>구성 보기 →</em></button>
         </div>
       </div>
@@ -986,7 +986,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".ptab");if(!b)re
 /* packages */
 const PKGS={
  orig:{cat:"PKG 01 · Original",title:"오리지널 풀패키지",desc:"곡만 있으면 끝. 작곡부터 완성 음원까지 한 번에 맡기는 구성이에요.",price:"₩660,000",
-  rows:[["포함 작업",[["작곡 · 편곡 (2~4분 풀사이즈)","포함"],["보컬 박자 · 음정 보정","포함"],["탑라인 (멜로디 라인)","포함"],["보컬 믹싱","포함"],["마스터링","포함"]]]],
+  rows:[["포함 작업",[["작곡 · 편곡 (2~4분 풀사이즈)","포함"],["보컬 박자 · 음정 보정","포함"],["탑라인 (멜로디 라인)","포함"],["화음 가이드","포함"],["보컬 믹싱","포함"],["마스터링","포함"]]]],
   note:"작사와 가창은 포함되지 않아요. 곡 길이와 편성에 따라 금액이 달라질 수 있어요."},
  cover:{cat:"PKG 02 · Cover",title:"커버곡 Inst + 믹싱 · 마스터링",desc:"커버곡 MR을 새로 만들고, 녹음한 보컬까지 믹싱해 완성본으로 드려요.",price:"₩345,000",
   rows:[["Inst 제작",[["원하는 분위기 · 장르로 어레인지","260,000"]]],["보컬 믹싱",[["1인 에디팅 + 믹싱 + 마스터링","85,000"]]]],
