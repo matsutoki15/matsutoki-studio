@@ -866,11 +866,13 @@ const W=[
  ["FT5mbpe8NBM","밤양갱 (Bam Yang Gang) [MatsuToki Remix]","비챤 COVER","remix"],
  ["_jVdtxTcDx0","만찬가 (晩餐歌) [MatsuToki Remix]","Cover by 이오몽","remix"],
  ["akqWQFtN57Y","But You Want More [MatsuToki Remix]","이세계아이돌","remix"],
+ ["sZjLu47zxLc","삐질게 (BBiJilGe) [MatsuToki Remix]","아야츠노 유니","remix"],
  ["nzzl-A7YCVM","BLESSING — 한국어 COVER","이라 × 코스모 × 솜냐 × 세온 × 최수아 × 류새백","guide"],
  ["oCZEMrIGnFQ","히어로 (LUCY) COVER","히어로를 불러보았습니다!","guide"],
  ["g7My5jO9y3w","少女レイ (소녀 레이)","이토리 (Itori) Cover","guide"],
  ["HF2l9OgLOEQ","프로포즈 (プロポーズ)","선아린 COVER","guide"],
  ["qMyLkjUij4Q","愛言葉Ⅱ (사랑의 말Ⅱ)","이토리 Cover","guide"],
+ ["XYK9LrlG0-k","괴수의 꽃노래 (怪獣の花唄)","디아푸 COVER","guide"],
  ["-cMcfk0855U","치지직 후원 효과음 1","아야세 테라","sfx"],
  ["ViVJopZBb5c","치지직 금액별 후원 효과음","청백월","sfx"],
  ["yYkGCaftMC0","치지직 후원 효과음 2","아야세 테라","sfx"],
@@ -907,7 +909,11 @@ const W=[
  ["v1P4Z__6kdg","우나 알람","모푸","mix"],
  ["sdGyuPIBxGI","모푸 - モニタリング (Best Friend Remix) — DECO*27","MWAH!","mix",1],
  ["MqFd3ztDyrU","모푸 - おつかれSUMMER — halcali","수고했어 여름 · Shorts","mix",1],
- ["sB8_EoVRW0E","모푸 - 마카롱에 들어가는 크림이 되고 싶어🩷","マカロンに挟むクリームになりたい · 歌ってみた","mix"]
+ ["sB8_EoVRW0E","모푸 - 마카롱에 들어가는 크림이 되고 싶어🩷","マカロンに挟むクリームになりたい · 歌ってみた","mix"],
+ ["966tR3Kl38A","체리팝 (チェリーポップ) — DECO*27","그리움 (Rium) COVER","mix"],
+ ["dnDU1CL2_dM","당신의 연인이 되고 싶어 🍫 (貴方の恋人になりたい)","시로이 삐요 × 버찌 COVER","mix"],
+ ["ddlyawZLIQU","할로윈🎃 주문을 외울게 — M2U & CLS","마리엘 × 모푸 COVER","mix"],
+ ["6mfZH8YhTHs","踊り子 (무희) — Vaundy","HAYU COVER","mix"],
 ];
 const CAT={original:["오리지널","t-original"],arr:["편곡 · 리믹스","t-arr"],mix:["보컬 믹스","t-mix"],sig:["시그니처 BGM","t-sig"],intro:["인트로 · 아웃트로","t-intro"],pv:["PV · 티저","t-pv"],guide:["Guide / Vocal Direct","t-guide"],sfx:["후원 효과음","t-sfx"],remix:["Remix (개인작)","t-remix"]};
 const url=w=>w[4]?`https://www.youtube.com/shorts/${w[0]}`:`https://youtu.be/${w[0]}`;
@@ -924,7 +930,7 @@ document.getElementById("feat").innerHTML=FEAT.map(id=>{const w=W.find(x=>x[0]==
 /* portfolio grid */
 const ALSO={"9ZdJfc-eZLM":["mix"]};
 const inCat=(w,k)=>w[3]===k||(ALSO[w[0]]||[]).includes(k);
-const ROLES={"ZTWxpGtdgz0": ["작곡"], "9ZdJfc-eZLM": ["작곡", "편곡", "보컬 믹싱", "마스터링"], "W6HPQLKkQ0Q": ["작곡"], "aH7O77x-zhs": ["작곡"], "NjD11vOkx5o": ["작곡"], "LFaaMVnw2N8": ["작곡", "편곡", "믹싱"], "vfwBE_Sxts0": ["작곡"], "1WWFxG7_7Ok": ["작곡", "편곡"], "ZUceUkp0Wr8": ["작곡", "편곡"], "MA_B7p8naS0": ["작곡"], "6QsDMyLJUKc": ["작곡", "편곡", "믹싱"], "MpL1bpdKARs": ["작곡"], "yPCPXbzU1-o": ["작곡"], "fuddLxkRwOk": ["BGM"], "5GUPStUSWhs": ["작곡", "BGM"], "J22ekUG3Qlw": ["BGM"], "NHZ1MhSmi6k": ["MR제작", "편곡"], "3zVP5VPqdvQ": ["편곡"], "oStPPiOYs2s": ["편곡"], "I77rrR4fwSw": ["편곡"], "tW4JpjG5oWA": ["편곡"], "MnwH162aTBs": ["MR제작", "편곡"], "qyV3J7VfoqI": ["편곡", "에디팅", "믹싱", "마스터링"], "PP813SOA878": ["편곡"], "NiXIUbSKQMk": ["편곡"], "-h35oWtPpvE": ["MR제작", "편곡"], "b2AwXQT9RQk": ["믹싱", "마스터링"], "gBpvYApAFfQ": ["에디팅", "믹싱", "마스터링"], "ZV_0KbNA7xI": ["에디팅", "믹싱", "마스터링"], "hJxT9UZMJbM": ["에디팅", "믹싱", "마스터링"], "e8_qbmi6I1E": ["에디팅", "믹싱", "마스터링"], "dc3gr3KdX7k": ["MR제작", "에디팅", "믹싱", "마스터링"], "qC34fmrcMY0": ["에디팅", "믹싱", "마스터링"], "RUQlYQBA6Xc": ["에디팅", "믹싱", "마스터링"], "Wu9YG1GH8nI": ["에디팅", "믹싱", "마스터링"], "IAmUau0WjW8": ["에디팅", "믹싱", "마스터링"], "sdGyuPIBxGI": ["믹싱"], "Jqln6ZQlg3A": ["에디팅", "믹싱", "마스터링"], "MqFd3ztDyrU": ["믹싱"], "sB8_EoVRW0E": ["에디팅", "믹싱", "마스터링"], "VxmxIsNhjt8": ["BGM"], "tbNPwBrM7Ss": ["BGM"], "bwZPktJ1ma0": ["편곡", "믹싱"], "41RQ_GTN1VE": ["편곡"], "Oazsa0UUEAs": ["편곡"]};
+const ROLES={"ZTWxpGtdgz0": ["작곡"], "9ZdJfc-eZLM": ["작곡", "편곡", "보컬 믹싱", "마스터링"], "W6HPQLKkQ0Q": ["작곡"], "aH7O77x-zhs": ["작곡"], "NjD11vOkx5o": ["작곡"], "LFaaMVnw2N8": ["작곡", "편곡", "믹싱"], "vfwBE_Sxts0": ["작곡"], "1WWFxG7_7Ok": ["작곡", "편곡"], "ZUceUkp0Wr8": ["작곡", "편곡"], "MA_B7p8naS0": ["작곡"], "6QsDMyLJUKc": ["작곡", "편곡", "믹싱"], "MpL1bpdKARs": ["작곡"], "yPCPXbzU1-o": ["작곡"], "fuddLxkRwOk": ["BGM"], "5GUPStUSWhs": ["작곡", "BGM"], "J22ekUG3Qlw": ["BGM"], "NHZ1MhSmi6k": ["MR제작", "편곡"], "3zVP5VPqdvQ": ["편곡"], "oStPPiOYs2s": ["편곡"], "I77rrR4fwSw": ["편곡"], "tW4JpjG5oWA": ["편곡"], "MnwH162aTBs": ["MR제작", "편곡"], "qyV3J7VfoqI": ["편곡", "에디팅", "믹싱", "마스터링"], "PP813SOA878": ["편곡"], "NiXIUbSKQMk": ["편곡"], "-h35oWtPpvE": ["MR제작", "편곡"], "b2AwXQT9RQk": ["믹싱", "마스터링"], "gBpvYApAFfQ": ["에디팅", "믹싱", "마스터링"], "ZV_0KbNA7xI": ["에디팅", "믹싱", "마스터링"], "hJxT9UZMJbM": ["에디팅", "믹싱", "마스터링"], "e8_qbmi6I1E": ["에디팅", "믹싱", "마스터링"], "dc3gr3KdX7k": ["MR제작", "에디팅", "믹싱", "마스터링"], "qC34fmrcMY0": ["에디팅", "믹싱", "마스터링"], "RUQlYQBA6Xc": ["에디팅", "믹싱", "마스터링"], "Wu9YG1GH8nI": ["에디팅", "믹싱", "마스터링"], "IAmUau0WjW8": ["에디팅", "믹싱", "마스터링"], "sdGyuPIBxGI": ["믹싱"], "Jqln6ZQlg3A": ["에디팅", "믹싱", "마스터링"], "MqFd3ztDyrU": ["믹싱"], "sB8_EoVRW0E": ["에디팅", "믹싱", "마스터링"], "VxmxIsNhjt8": ["BGM"], "tbNPwBrM7Ss": ["BGM"], "bwZPktJ1ma0": ["편곡", "믹싱"], "41RQ_GTN1VE": ["편곡"], "Oazsa0UUEAs": ["편곡"], "966tR3Kl38A": ["에디팅", "믹싱", "마스터링"], "dnDU1CL2_dM": ["에디팅", "믹싱", "마스터링"], "ddlyawZLIQU": ["에디팅", "믹싱", "마스터링"], "6mfZH8YhTHs": ["에디팅", "믹싱", "마스터링"], "XYK9LrlG0-k": ["화음 가이드"]};
 let cur="all",q="",pg=1;const PER=12;
 const CATKEY={original:"Original",arr:"Arrange · Remix",sig:"Signature BGM",intro:"Intro · Outro",pv:"PV · Teaser",mix:"Vocal Mix",remix:"Personal Remix",guide:"Guide · Vocal Direct",sfx:"Donation Sound Effects"};
 const CATORD=Object.keys(CAT);
