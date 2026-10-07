@@ -718,6 +718,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
 - 곡 제목 · 원곡 또는 레퍼런스 링크:
 - 원하는 분위기 · 요청사항:
 - 음원 길이 / 용도 (방송, 커버, 상업용 등):
+- 참고 자료 (캐릭터 설정표, 일러스트 등):
 - 희망 일정:
 - 예산 범위:</pre>
       </div>
@@ -762,7 +763,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
     </div>
     <div class="ch">
       <div class="chan primary"><div><div class="k">Discord</div><div class="v" id="c-dc">matsutoki15</div></div><div class="acts"><button data-copy="c-dc">복사</button><a class="open" href="https://discord.com/users/1033320030001172540">DM 보내기 ↗</a></div></div>
-      <div class="chan"><div><div class="k">E-mail</div><div class="v" id="c-em">matsutoki15@gmail.com</div></div><button data-copy="c-em">복사</button></div>
+      <div class="chan"><div><div class="k">E-mail</div><div class="v" id="c-em" data-u="matsutoki15" data-d="gmail.com">matsutoki15 [at] gmail.com</div></div><button data-copy="c-em">복사</button></div>
       <div class="chan"><div><div class="k">Kakao Open Chat</div><div class="v">open.kakao.com/o/s12kQsDf</div></div><a class="open" href="https://open.kakao.com/o/s12kQsDf">열기 ↗</a></div>
     </div>
     <div class="qform">
@@ -1025,6 +1026,9 @@ document.addEventListener("click",async e=>{
  }});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")pkClose();});
 
+/* email */
+(()=>{const e=document.getElementById("c-em");if(e)e.textContent=e.dataset.u+"@"+e.dataset.d;})();
+
 /* copy */
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;
  const el=document.getElementById(b.dataset.copy);const t=el.innerText;const old=b.textContent;
@@ -1070,5 +1074,6 @@ new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,
 if(document.fonts)document.fonts.ready.then(drawAll);
 </script>
 
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2e72a419f5894aa299c9e2df9ebbcbdf"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
