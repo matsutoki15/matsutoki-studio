@@ -424,6 +424,11 @@ ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;
 ol.steps li{counter-increment:s;display:flex;align-items:center;gap:8px;font-size:14px;padding:8px 12px;border-radius:8px;background:var(--sunk)}
 ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--accent-ink)}
 ol.steps li.opt{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.tat{margin:10px 0 12px;display:grid;gap:0}
+.tat div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.tat div:last-child{border-bottom:0}
+.tat dt{color:var(--muted);min-width:0}
+.tat dd{margin:0;font-family:var(--display);font-weight:800;color:var(--ink);white-space:nowrap}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
 .fact .k{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
@@ -663,7 +668,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
         <li><span class="dot">4</span><div><em>STEP 4</em><h3>완성본 받기</h3><p>수정 사항까지 반영한 최종 파일을 WAV로 전달드려요.</p></div></li>
       </ol>
       <div class="facts">
-        <div class="fact"><div class="k">Turnaround</div><div class="v">3~5일</div><p>평균 기준이며 길어도 10일 내외. 마감일에 최대한 맞춰 드려요.</p></div>
+        <div class="fact"><div class="k">Turnaround</div><dl class="tat"><div><dt>보컬 믹싱</dt><dd>1~3일</dd></div><div><dt>방송용 BGM · 인트로 · Inst</dt><dd>3~5일</dd></div><div><dt>오리지널 곡</dt><dd>7~10일</dd></div></dl><p>마감일이 정해져 있으면 최대한 맞춰 드려요. 더 급하면 빠른 마감(1~2일) 옵션을 이용해주세요.</p></div>
         <div class="fact"><div class="k">Delivery</div><div class="v mono" style="font-size:20px">WAV 48k/24bit</div><p>요청하시면 MP3도 함께 보내드려요.</p></div>
         <div class="fact"><div class="k">Revisions</div><div class="v">작업 중 반영</div><p>전면 재작업이 필요한 경우 추가 비용이 발생할 수 있어요.</p></div>
       </div>
