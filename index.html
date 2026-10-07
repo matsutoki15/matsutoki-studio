@@ -286,10 +286,12 @@ section{padding-block:56px}
 .pnote-box{margin-top:16px;display:flex;gap:14px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
 .pnote-box span{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
 .pnote-box p{margin:0;font-size:14px;color:var(--muted)}
-.guide-banner{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:22px 26px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--muted);font-size:15px}
-.guide-banner b{color:var(--ink);margin-right:6px}
-.guide-banner em{font-style:normal;font-weight:700;color:var(--accent-ink)}
-.guide-banner:hover{border-color:var(--accent)}
+.guide-banner{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;padding:24px 28px;border-radius:var(--r);background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 14%,var(--surface)),color-mix(in srgb,var(--accent-2) 12%,var(--surface)));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line))}
+.guide-banner>div{display:grid;gap:4px;min-width:0;flex:1 1 300px}
+.gb-k{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.guide-banner b{font-size:18px;color:var(--ink)}
+.guide-banner p{margin:0;color:var(--muted);font-size:14px}
+.guide-banner a{flex:none;padding:11px 20px;border-radius:999px;background:var(--grad);color:var(--on-accent);font-weight:700;font-size:14px;text-decoration:none}
 .pask{margin:24px 0 0;color:var(--muted);font-size:14.5px}
 .pask a{color:var(--accent-ink);font-weight:700;text-decoration:none;margin-left:6px}
 .lesson-chips span{font-size:13px;padding:5px 12px}
@@ -368,6 +370,21 @@ table.refund tr:last-child td{border-bottom:0}
 .vn-big{font-family:var(--display);font-weight:900;font-size:26px}
 .vn-time p{flex:1 1 300px}
 @media (max-width:720px){.vn{grid-template-columns:1fr}}
+/* steps2 */
+.steps2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;position:relative}
+.steps2{margin-bottom:36px}
+.steps2 li:not(:last-child)::after{content:"";position:absolute;left:52px;right:-12px;top:21px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.45}
+.steps2 li{position:relative;display:flex;flex-direction:column;gap:16px;min-width:0}
+.steps2 .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:900;font-size:18px;position:relative;z-index:1}
+.steps2 li:last-child .dot{background:var(--grad);border-color:transparent;color:#fff}
+.steps2 em{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.steps2 h3{font-family:var(--body);font-weight:700;font-size:17px;margin:4px 0 6px}
+.steps2 p{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:820px){
+ .steps2{grid-template-columns:1fr;gap:22px}
+ .steps2 li:not(:last-child)::after{left:21px;right:auto;top:52px;bottom:-16px;width:2px;height:auto;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+ .steps2 li{flex-direction:row;gap:16px}
+ .steps2 .dot{flex:none}}
 .flow{display:grid;gap:16px}
 .track{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
 .track h3{font-size:18px;margin-bottom:16px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
@@ -591,7 +608,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
           </table>
         </div>
       </div>
-      <a class="guide-banner" href="#guide" data-go="guide"><span><b>처음 의뢰하시나요?</b> 진행 순서와 녹음본 준비 방법을 정리해 두었어요.</span><em>의뢰 가이드 보기 →</em></a>
+      <div class="guide-banner"><div><span class="gb-k">Before you order</span><b>의뢰 전에 한 번 읽어보세요</b><p>진행 순서, 녹음본 포맷, 문의 양식을 한 페이지에 모아뒀어요.</p></div><a href="#guide" data-go="guide">의뢰 가이드 →</a></div>
     </div>
   </section>
 </div>
@@ -601,11 +618,11 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
   <section>
     <div class="wrap">
       <div class="sec-head"><div><span class="eyebrow">Guide</span><h2>의뢰 가이드</h2><p>문의부터 전달까지의 순서예요. 진행 중에도 수정 사항은 언제든 말씀해 주세요.</p></div></div>
-      <ol class="process">
-        <li><span class="pn">01</span><div><h3>문의</h3><p>디스코드나 이메일로 문의 양식을 보내주세요. 원하시는 작업을 간단히 알려주셔도 괜찮아요.</p></div></li>
-        <li><span class="pn">02</span><div><h3>확인 · 견적</h3><p>곡과 레퍼런스(믹싱은 녹음 소스와 Inst)를 보고 작업 범위와 금액, 일정을 안내드려요.</p></div></li>
-        <li><span class="pn">03</span><div><h3>결제 · 작업</h3><p>결제 후 작업을 시작하고, 중간 결과물로 1차 · 2차 컨펌을 진행해요.</p></div></li>
-        <li><span class="pn">04</span><div><h3>마무리 · 전달</h3><p>수정 사항을 반영해 마무리하고 완성본을 전달해요.</p></div></li>
+      <ol class="steps2">
+        <li><span class="dot">1</span><div><em>STEP 1</em><h3>문의 남기기</h3><p>디스코드나 이메일로 문의 양식을 보내주세요. 간단한 설명만 있어도 괜찮아요.</p></div></li>
+        <li><span class="dot">2</span><div><em>STEP 2</em><h3>견적 받기</h3><p>곡과 레퍼런스(믹싱은 녹음본 · Inst)를 확인하고 금액과 일정을 알려드려요.</p></div></li>
+        <li><span class="dot">3</span><div><em>STEP 3</em><h3>작업 · 컨펌</h3><p>결제 후 작업을 시작하고, 중간 결과물로 1차 · 2차 컨펌을 함께 진행해요.</p></div></li>
+        <li><span class="dot">4</span><div><em>STEP 4</em><h3>완성본 받기</h3><p>수정 사항까지 반영한 최종 파일을 WAV로 전달드려요.</p></div></li>
       </ol>
       <div class="facts">
         <div class="fact"><div class="k">Turnaround</div><div class="v">3~5일</div><p>평균 기준이며 길어도 10일 내외. 마감일에 최대한 맞춰 드려요.</p></div>
