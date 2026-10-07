@@ -296,6 +296,37 @@ section{padding-block:56px}
 .pask a{color:var(--accent-ink);font-weight:700;text-decoration:none;margin-left:6px}
 .lesson-chips span{font-size:13px;padding:5px 12px}
 @media (max-width:560px){.ptab{padding:10px 13px;font-size:14px}}
+/* packages */
+.pkgs{margin-top:44px}
+.pkgs .eyebrow{display:block;margin-bottom:6px}
+.pkg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pkg{text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface) 60%);transition:border-color .2s,transform .2s}
+.pkg:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pkg-k{display:flex;gap:10px;align-items:center;font-family:var(--display);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.pkg-k i{font-style:normal;font-family:var(--mono);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.pkg b{font-size:19px;font-family:var(--display);font-weight:800}
+.pkg p{margin:0;color:var(--muted);font-size:14px}
+.pkg-price{font-family:var(--display);font-weight:900;font-size:28px;margin-top:6px;font-variant-numeric:tabular-nums}
+.pkg-price small{font-family:var(--body);font-weight:500;font-size:13px;color:var(--muted);margin-left:6px}
+.pkg em{font-style:normal;font-weight:700;font-size:14px;color:var(--accent-ink);margin-top:2px}
+.pkg-link{display:block;margin-top:2px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted);text-decoration:none}
+.pkg-link b{color:var(--accent-ink)}
+@media (max-width:640px){.pkg-grid{grid-template-columns:1fr}}
+.pm-box{width:min(560px,100%);display:flex;flex-direction:column}
+.pm-desc{margin:6px 0 0;color:var(--muted);font-size:14px}
+.pm-body{padding:0 26px 8px;overflow:auto}
+.pm-total{display:flex;align-items:baseline;gap:10px;padding:18px 20px;border-radius:14px;background:var(--sunk);margin-bottom:8px}
+.pm-total span{font-size:13px;color:var(--muted)}
+.pm-total b{font-family:var(--display);font-weight:900;font-size:30px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pm-total small{font-size:13px;color:var(--muted)}
+.pm-group{margin-top:16px;font-size:12.5px;letter-spacing:.06em;color:var(--muted)}
+.pm-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.pm-row b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pm-row b.inc{color:var(--accent-ink)}
+.pm-note{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.pm-foot{padding:16px 26px 22px;border-top:1px solid var(--line);margin-top:12px}
+.pm-cta{width:100%;padding:15px;border:0;border-radius:14px;background:var(--grad);color:#fff;font:700 15px var(--body);cursor:pointer}
+.pm-hint{margin:8px 0 0;text-align:center;font-size:12.5px;color:var(--muted)}
 /* pricing */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .price{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
@@ -546,7 +577,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
       <div class="pcat" data-pcat="orig">
         <div class="pcat-head"><h3>오리지널 · BGM<span>Original · BGM</span></h3><p>오리지널 곡부터 방송용 BGM, 인트로, PV 음악까지 새로 만드는 작업이에요.</p></div>
         <div class="price-grid c2">
-        <article class="price"><div class="top"><span class="tag t-original">ORIGINAL SONG</span></div><h3>오리지널 곡 제작</h3><p class="sub">2~4분 내외 풀사이즈 오리지널 곡</p><div class="amount">₩500,000<small>부터</small></div><ul class="opts"><li><span>풀사이즈 오리지널 곡 제작 (2~4분)</span><b>500,000</b></li><li><span>작곡 + 보컬 박자·음정 보정 + 탑라인 + 믹싱 + 마스터링 풀패키지</span><b>660,000</b></li><li><span>작곡이 진행된 오리지널 곡에 편곡 (상업적 라이선스 포함)</span><b>1,000,000</b></li></ul></article>
+        <article class="price"><div class="top"><span class="tag t-original">ORIGINAL SONG</span></div><h3>오리지널 곡 제작</h3><p class="sub">2~4분 내외 풀사이즈 오리지널 곡</p><div class="amount">₩500,000<small>부터</small></div><ul class="opts"><li><span>풀사이즈 오리지널 곡 제작 (2~4분)</span><b>500,000</b></li><li><span>작곡이 진행된 오리지널 곡에 편곡 (상업적 라이선스 포함)</span><b>1,000,000</b></li></ul><a class="pkg-link" href="#packages">믹싱 · 마스터링까지 한 번에? <b>풀패키지 660,000 →</b></a></article>
         <article class="price"><div class="top"><span class="tag t-sig">SIGNATURE BGM</span></div><h3>방송용 시그니처 BGM</h3><p class="sub">저챗 · 대기화면 · 로딩화면용 Loop BGM</p><div class="amount">₩140,000<small>부터</small></div><ul class="opts"><li><span>1분 길이 방송용 Loop BGM</span><b>140,000</b></li><li><span>2분 길이 방송용 Loop BGM</span><b>180,000</b></li></ul></article>
         <article class="price"><div class="top"><span class="tag t-intro">INTRO · OUTRO</span></div><h3>인트로 · 아웃트로 BGM</h3><p class="sub">유튜브 인트로 · 아웃트로 (Loop) 사운드</p><div class="amount">₩50,000<small>3~7초 내외</small></div><p class="pnote">리액션 인트로, 포즈 트랜지션 등 짧은 영상용 사운드.</p></article>
         <article class="price"><div class="top"><span class="tag t-pv">PV · TEASER</span></div><h3>PV BGM</h3><p class="sub">데뷔 PV · 티저 영상용 BGM</p><div class="amount">₩90,000<small>45초 내외</small></div><p class="pnote">영상 컷 타이밍에 맞춰 작곡해요.</p></article>
@@ -577,6 +608,13 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
         <div class="pcat-head"><h3>레슨<span>Lesson</span></h3><p>작곡 · 편곡 · 믹싱을 직접 배우고 싶은 분을 위한 1:1 수업이에요.</p></div>
         <div class="price-grid c1">
         <article class="price"><div class="top"><span class="tag t-guide">LESSON</span></div><h3>작 · 편곡 1:1 강의</h3><p class="sub">주 4회 · 회당 1시간 30분 · 온라인 수업</p><div class="amount">₩200,000</div><div class="vn-chips lesson-chips"><span>작곡</span><span>편곡</span><span>탑라인 제작</span><span>기초 보컬 믹싱</span></div><p class="pnote">배우고 싶은 분야와 수준에 맞춰 커리큘럼을 짜드려요.</p></article>
+        </div>
+      </div>
+      <div class="pkgs" id="packages">
+        <div class="pcat-head"><span class="eyebrow">Packages</span><h3>패키지<span>Packages</span></h3><p>자주 함께 맡기시는 작업을 묶었어요. 눌러서 구성을 확인하세요.</p></div>
+        <div class="pkg-grid">
+          <button class="pkg" data-pkg="orig"><span class="pkg-k"><i>PKG 01</i>Original</span><b>오리지널 풀패키지</b><p>작곡부터 보컬 보정, 탑라인, 믹싱 · 마스터링까지 한 번에</p><div class="pkg-price">₩660,000<small>부터</small></div><em>구성 보기 →</em></button>
+          <button class="pkg" data-pkg="cover"><span class="pkg-k"><i>PKG 02</i>Cover</span><b>커버곡 Inst + 믹싱 · 마스터링</b><p>커버곡 MR 제작부터 보컬 믹싱 · 마스터링까지 한 번에</p><div class="pkg-price">₩340,000<small>부터</small></div><em>구성 보기 →</em></button>
         </div>
       </div>
       <p class="pask">찾는 작업이 없거나 조합이 궁금하시면 편하게 물어보세요. <a href="#contact" data-go="contact">문의하기 →</a></p>
@@ -758,6 +796,17 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
     </div>
   </div>
 </div>
+<div id="pmodal" class="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="pm-title">
+  <div class="vm-box pm-box">
+    <div class="vm-head"><div><span class="vm-cat" id="pm-cat"></span><h3 id="pm-title"></h3><p class="pm-desc" id="pm-desc"></p></div><button id="pm-close" class="vm-x" aria-label="닫기">✕</button></div>
+    <div class="pm-body">
+      <div class="pm-total"><span>예상 금액</span><b id="pm-price"></b><small>부터</small></div>
+      <div id="pm-rows"></div>
+      <p class="pm-note" id="pm-note"></p>
+    </div>
+    <div class="pm-foot"><button class="pm-cta" id="pm-cta">이 구성으로 문의하기</button><p class="pm-hint" id="pm-hint">누르면 패키지 이름이 적힌 문의 양식이 복사돼요.</p></div>
+  </div>
+</div>
 <script>
 const W=[
  // [id, title, client, cat, shorts?]
@@ -933,6 +982,33 @@ document.addEventListener("keydown",e=>{if(document.getElementById("vmodal").hid
 document.addEventListener("click",e=>{const b=e.target.closest(".ptab");if(!b)return;const k=b.dataset.pcat;
  document.querySelectorAll(".ptab").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
  document.querySelectorAll(".pcat").forEach(x=>x.hidden=x.dataset.pcat!==k);});
+
+/* packages */
+const PKGS={
+ orig:{cat:"PKG 01 · Original",title:"오리지널 풀패키지",desc:"곡만 있으면 끝. 작곡부터 완성 음원까지 한 번에 맡기는 구성이에요.",price:"₩660,000",
+  rows:[["포함 작업",[["작곡 · 편곡 (2~4분 풀사이즈)","포함"],["보컬 박자 · 음정 보정","포함"],["탑라인 (멜로디 라인)","포함"],["보컬 믹싱","포함"],["마스터링","포함"]]]],
+  note:"작사와 가창은 포함되지 않아요. 곡 길이와 편성에 따라 금액이 달라질 수 있어요."},
+ cover:{cat:"PKG 02 · Cover",title:"커버곡 Inst + 믹싱 · 마스터링",desc:"커버곡 MR을 새로 만들고, 녹음한 보컬까지 믹싱해 완성본으로 드려요.",price:"₩340,000",
+  rows:[["Inst 제작",[["원하는 분위기 · 장르로 어레인지","260,000"]]],["보컬 믹싱",[["1인 에디팅 + 믹싱 + 마스터링","80,000"]]]],
+  note:"원곡 퀄리티 그대로 Inst를 만들면 +30,000, 2인 · 3인 믹싱이면 인원에 따라 금액이 더해져요. 화음 가이드 등 추가 작업은 상담 후 안내드려요."}};
+let PK=null;
+function pkOpen(k){PK=k;const d=PKGS[k];
+ pmSet("pm-cat",d.cat);pmSet("pm-title",d.title);pmSet("pm-desc",d.desc);pmSet("pm-price",d.price);pmSet("pm-note",d.note);
+ document.getElementById("pm-rows").innerHTML=d.rows.map(([g,items])=>`<div class="pm-group">${esc(g)}</div>`+items.map(([n,v])=>`<div class="pm-row"><span>${esc(n)}</span><b class="${v==="포함"?"inc":""}">${v==="포함"?"✓ 포함":v+"원"}</b></div>`).join("")).join("");
+ document.getElementById("pm-cta").textContent="이 구성으로 문의하기";pmSet("pm-hint","누르면 패키지 이름이 적힌 문의 양식이 복사돼요.");
+ const m=document.getElementById("pmodal");m.hidden=false;document.body.style.overflow="hidden";document.getElementById("pm-close").focus();}
+function pmSet(id,t){document.getElementById(id).textContent=t;}
+function pkClose(){const m=document.getElementById("pmodal");if(m.hidden)return;m.hidden=true;document.body.style.overflow="";}
+document.addEventListener("click",async e=>{
+ const b=e.target.closest(".pkg");if(b){pkOpen(b.dataset.pkg);return;}
+ const l=e.target.closest(".pkg-link");if(l){e.preventDefault();document.getElementById("packages").scrollIntoView({behavior:"smooth",block:"start"});return;}
+ if(e.target.id==="pmodal"||e.target.closest("#pm-close")){pkClose();return;}
+ if(e.target.closest("#pm-cta")&&PK){
+  const t=document.getElementById("f1").innerText.replace(/- 필요한 작업[^\n]*/,"- 필요한 작업: "+PKGS[PK].title+" 패키지");
+  let ok=true;try{await navigator.clipboard.writeText(t);}catch(_){ok=false;}
+  if(ok){pkClose();go("contact");}else{pmSet("pm-hint","복사가 막혀 있어요. 하단 문의 영역에서 양식을 복사해주세요.");}
+ }});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")pkClose();});
 
 /* copy */
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;
