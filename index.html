@@ -283,6 +283,13 @@ section{padding-block:56px}
 .price-grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .price-grid.c1{grid-template-columns:minmax(0,560px)}
 @media (max-width:560px){.price-grid.c2{grid-template-columns:1fr}.price-grid.c1{grid-template-columns:1fr}}
+.pnote-box{margin-top:16px;display:flex;gap:14px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.pnote-box span{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
+.pnote-box p{margin:0;font-size:14px;color:var(--muted)}
+.guide-banner{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:22px 26px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--muted);font-size:15px}
+.guide-banner b{color:var(--ink);margin-right:6px}
+.guide-banner em{font-style:normal;font-weight:700;color:var(--accent-ink)}
+.guide-banner:hover{border-color:var(--accent)}
 .pask{margin:24px 0 0;color:var(--muted);font-size:14.5px}
 .pask a{color:var(--accent-ink);font-weight:700;text-decoration:none;margin-left:6px}
 .lesson-chips span{font-size:13px;padding:5px 12px}
@@ -511,7 +518,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
   <section>
     <div class="wrap">
       <div class="sec-head"><div><span class="eyebrow">Pricing</span><h2>외주 단가</h2><p>모든 금액은 비상업 · 방송 활동 기준 기본가예요. 곡 길이와 난이도에 따라 상담 후 최종 견적을 안내드려요.</p></div></div>
-      <div class="ptabs-wrap"><p class="ptabs-label"><b>분야 선택</b> 눌러서 분야별 단가를 확인하세요</p>
+      <div class="ptabs-wrap"><p class="ptabs-label"><b>분야 선택</b> 총 5개 분야 · 눌러서 단가를 확인하세요</p>
       <div class="ptabs" role="group" aria-label="단가 분야">
         <button class="ptab" data-pcat="orig" aria-pressed="true"><span class="pn">01</span>오리지널 · BGM<span class="pc">4</span></button>
         <button class="ptab" data-pcat="inst" aria-pressed="false"><span class="pn">02</span>Inst · 편곡<span class="pc">2</span></button>
@@ -556,6 +563,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
         </div>
       </div>
       <p class="pask">찾는 작업이 없거나 조합이 궁금하시면 편하게 물어보세요. <a href="#contact" data-go="contact">문의하기 →</a></p>
+      <div class="pnote-box"><span>NOTE</span><p>위 단가는 기본 구성 기준이에요. 실제 금액은 곡 길이, 트랙 수, 난이도에 따라 상담 후 조율해요.</p></div>
 
       <div class="panel rush">
         <div><span class="eyebrow">Rush Option</span><h3 style="margin-top:6px">빠른 마감</h3><p><b style="color:var(--ink)">1~2일 이내</b> 마감이 필요할 때 선택하는 옵션이에요. 가능 여부는 일정 확인 후 안내드려요.</p></div>
@@ -583,6 +591,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
           </table>
         </div>
       </div>
+      <a class="guide-banner" href="#guide" data-go="guide"><span><b>처음 의뢰하시나요?</b> 진행 순서와 녹음본 준비 방법을 정리해 두었어요.</span><em>의뢰 가이드 보기 →</em></a>
     </div>
   </section>
 </div>
