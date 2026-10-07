@@ -205,7 +205,6 @@ section{padding-block:56px}
 .note{font-size:13px;color:var(--muted);margin-top:14px}
 
 /* portfolio grid */
-const ME=/[?&]me=1\b/.test(location.search);
 .pf-head{padding-block:48px 0}
 .crumb{display:flex;gap:10px;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .crumb a{text-decoration:none}
@@ -924,6 +923,7 @@ document.getElementById("feat").innerHTML=FEAT.map(id=>{const w=W.find(x=>x[0]==
  return `<a class="card" href="${url(w)}" target="_blank" rel="noopener" data-vid="${id}" data-ctx="feat">${thumb(id)?`<div class="thumb"><img src="${thumb(id)}" alt="" loading="lazy"></div>`:`<canvas data-seed="${id}"></canvas>`}<div class="meta"><span class="tag ${c[1]}">${c[0]}</span><h3>${esc(w[1])}</h3><span class="client">${esc(w[2])}</span></div></a>`}).join("");
 
 /* portfolio grid */
+const ME=/[?&]me=1\b/.test(location.search);
 const ALSO={"9ZdJfc-eZLM":["mix"]};
 const inCat=(w,k)=>w[3]===k||(ALSO[w[0]]||[]).includes(k);
 const ROLES={"ZTWxpGtdgz0": ["작곡"], "9ZdJfc-eZLM": ["작곡", "편곡", "보컬 믹싱", "마스터링"], "W6HPQLKkQ0Q": ["작곡"], "aH7O77x-zhs": ["작곡"], "NjD11vOkx5o": ["작곡"], "LFaaMVnw2N8": ["작곡", "편곡", "믹싱"], "vfwBE_Sxts0": ["작곡"], "1WWFxG7_7Ok": ["작곡", "편곡"], "ZUceUkp0Wr8": ["작곡", "편곡"], "MA_B7p8naS0": ["작곡"], "6QsDMyLJUKc": ["작곡", "편곡", "믹싱"], "MpL1bpdKARs": ["작곡"], "yPCPXbzU1-o": ["작곡"], "fuddLxkRwOk": ["BGM"], "5GUPStUSWhs": ["작곡", "BGM"], "J22ekUG3Qlw": ["BGM"], "NHZ1MhSmi6k": ["MR제작", "편곡"], "3zVP5VPqdvQ": ["편곡"], "oStPPiOYs2s": ["편곡"], "I77rrR4fwSw": ["편곡"], "tW4JpjG5oWA": ["편곡"], "MnwH162aTBs": ["MR제작", "편곡"], "qyV3J7VfoqI": ["편곡", "에디팅", "믹싱", "마스터링"], "PP813SOA878": ["편곡"], "NiXIUbSKQMk": ["편곡"], "-h35oWtPpvE": ["MR제작", "편곡"], "b2AwXQT9RQk": ["믹싱", "마스터링"], "gBpvYApAFfQ": ["에디팅", "믹싱", "마스터링"], "ZV_0KbNA7xI": ["에디팅", "믹싱", "마스터링"], "hJxT9UZMJbM": ["에디팅", "믹싱", "마스터링"], "e8_qbmi6I1E": ["에디팅", "믹싱", "마스터링"], "dc3gr3KdX7k": ["MR제작", "에디팅", "믹싱", "마스터링"], "qC34fmrcMY0": ["에디팅", "믹싱", "마스터링"], "RUQlYQBA6Xc": ["에디팅", "믹싱", "마스터링"], "Wu9YG1GH8nI": ["에디팅", "믹싱", "마스터링"], "IAmUau0WjW8": ["에디팅", "믹싱", "마스터링"], "sdGyuPIBxGI": ["믹싱"], "Jqln6ZQlg3A": ["에디팅", "믹싱", "마스터링"], "MqFd3ztDyrU": ["믹싱"], "sB8_EoVRW0E": ["에디팅", "믹싱", "마스터링"], "VxmxIsNhjt8": ["BGM"], "tbNPwBrM7Ss": ["BGM"], "bwZPktJ1ma0": ["편곡", "믹싱"], "41RQ_GTN1VE": ["편곡"], "Oazsa0UUEAs": ["편곡"], "966tR3Kl38A": ["에디팅", "믹싱", "마스터링"], "dnDU1CL2_dM": ["에디팅", "믹싱", "마스터링"], "ddlyawZLIQU": ["에디팅", "믹싱", "마스터링"], "6mfZH8YhTHs": ["에디팅", "믹싱", "마스터링"], "XYK9LrlG0-k": ["화음 가이드"]};
