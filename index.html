@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://matsutoki.com/og.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
 html{color-scheme:light}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -83,6 +83,16 @@ nav.main a{text-decoration:none;padding:7px 13px;border-radius:999px;font-size:1
 nav.main a small{font-size:11px;opacity:.75}
 nav.main a:hover{color:var(--ink);background:var(--sunk)}
 nav.main a[aria-current="page"]{color:var(--accent-ink);background:var(--sunk)}
+.lang-sw{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--sunk);border:1px solid var(--line);margin-left:auto;margin-right:8px}
+.lang-sw button{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.04em;border:0;background:transparent;color:inherit;opacity:.6;padding:6px 8px;border-radius:999px;cursor:pointer}
+.lang-sw button:hover{opacity:1}
+.lang-sw button[aria-pressed="true"]{background:var(--grad);color:var(--on-accent);opacity:1}
+html:lang(ja){--body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;--display:"Nunito","Noto Sans JP",system-ui,sans-serif}
+html[lang="en"] nav.main small{display:none}
+@media (min-width:1200px){nav.main{flex-wrap:nowrap}nav.main a{white-space:nowrap}}
+@media (max-width:640px){.lang-sw{margin-right:0}.lang-sw button{padding:5px 6px;font-size:10px}}
+@media (max-width:440px){.bar .cta-mini{display:none}}
+@media (min-width:641px) and (max-width:1199px){html:lang(ja) nav.main small{display:none}}
 .cta-mini{font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;background:var(--grad);color:var(--on-accent);white-space:nowrap}
 @media (max-width:820px){
   .bar{flex-wrap:wrap}
@@ -501,6 +511,7 @@ footer{padding-block:28px;color:var(--muted);font-size:13px;display:flex;justify
       <a href="#guide" data-go="guide">Guide<small>의뢰 가이드</small></a>
       <a href="#contact" data-go="contact">Contact<small>문의</small></a>
     </nav>
+    <div class="lang-sw" role="group" aria-label="Language"><button type="button" data-lang="ko">KO</button><button type="button" data-lang="ja">JA</button><button type="button" data-lang="en">EN</button></div>
     <a class="cta-mini" href="#contact" data-go="contact">문의하기</a>
   </div>
 </header>
@@ -1020,7 +1031,9 @@ document.addEventListener("click",async e=>{
  const l=e.target.closest(".pkg-link");if(l){e.preventDefault();document.getElementById("packages").scrollIntoView({behavior:"smooth",block:"start"});return;}
  if(e.target.id==="pmodal"||e.target.closest("#pm-close")){pkClose();return;}
  if(e.target.closest("#pm-cta")&&PK){
-  const t=document.getElementById("f1").innerText.replace(/- 필요한 작업[^\n]*/,"- 필요한 작업: "+PKGS[PK].title+" 패키지");
+  const _k=typeof LANG==="undefined"||LANG==="ko"?null:(LANG==="ja"?0:1),_tt=_k==null?PKGS[PK].title:((I18N[PKGS[PK].title]||[])[_k]||PKGS[PK].title);
+  const _lb=_k==null?"- 필요한 작업: "+_tt+(_tt.includes("패키지")?"":" 패키지"):_k===0?"- 必要な作業: "+_tt:"- Service needed: "+_tt;
+  const t=document.getElementById("f1").innerText.replace(/^- (필요한 작업|必要な作業|Service needed)[^\n]*/m,_lb);
   let ok=true;try{await navigator.clipboard.writeText(t);}catch(_){ok=false;}
   if(ok){pkClose();go("contact");}else{pmSet("pm-hint","복사가 막혀 있어요. 하단 문의 영역에서 양식을 복사해주세요.");}
  }});
@@ -1072,6 +1085,287 @@ addEventListener("resize",()=>{clearTimeout(window.__t);window.__t=setTimeout(dr
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",drawAll);
 new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 if(document.fonts)document.fonts.ready.then(drawAll);
+
+/* i18n */
+/* i18n */
+const I18N={
+"+ 리얼 기타 세션 추가":["+ 生ギターセッション追加","+ Live guitar session"],
+", 모두 곡의 처음(0초)에서 시작하도록 맞춰 보내주세요.":["、すべて曲の頭(0秒)から始まるように揃えてお送りください。",", all aligned to start at the very beginning of the song (0:00)."],
+"150,000 내외":["約150,000","approx. 150,000"],
+"1~2일 이내":["1〜2日以内","Within 1–2 days"],
+"1~3일":["1〜3日","1–3 days"],
+"1~3초 후원 효과음 + 대사 음정 멜로디 제작 · 녹음":["1〜3秒の投げ銭効果音 + セリフのメロディ制作・録音","1–3 sec donation SFX + melodic voice line, produced & recorded"],
+"1곡 기준":["1曲あたり","per song"],
+"1분 길이 방송용 Loop BGM":["1分の配信用ループBGM","1-minute stream loop BGM"],
+"1인 기준":["1人あたり","per singer"],
+"1인 믹싱 + 마스터링 (에디팅 포함)":["1人 ミックス + マスタリング(エディット込み)","1 singer — mix + master (editing incl.)"],
+"1인 에디팅 + 믹싱 + 마스터링":["1人 エディット + ミックス + マスタリング","1 singer — editing + mix + master"],
+"1절 치기":["1番だけ","1st verse only"],
+"1절 치기 (에디팅 포함)":["1番だけ(エディット込み)","1st verse only (editing incl.)"],
+"1차 컨펌 후":["1次確認後","After 1st review"],
+"2~4분 내외 풀사이즈 오리지널 곡":["2〜4分のフルサイズオリジナル曲","Full-length original song (2–4 min)"],
+"2분 길이 방송용 Loop BGM":["2分の配信用ループBGM","2-minute stream loop BGM"],
+"2인 믹싱 + 마스터링 (에디팅 포함)":["2人 ミックス + マスタリング(エディット込み)","2 singers — mix + master (editing incl.)"],
+"2차 컨펌 후":["2次確認後","After 2nd review"],
+"3~5일":["3〜5日","3–5 days"],
+"3~7초 내외":["3〜7秒","3–7 sec"],
+"3인 믹싱 + 마스터링 (에디팅 포함)":["3人 ミックス + マスタリング(エディット込み)","3 singers — mix + master (editing incl.)"],
+"45초 내외":["約45秒","approx. 45 sec"],
+"7~10일":["7〜10日","7–10 days"],
+"CHOCOLATE CREAM / DR. FEEL GOOD 메들리":["CHOCOLATE CREAM / DR. FEEL GOOD メドレー","CHOCOLATE CREAM / DR. FEEL GOOD medley"],
+"DM 보내기 ↗":["DMを送る ↗","Send DM ↗"],
+"Inst · 편곡":["Inst・編曲","Inst · Arrange"],
+"Inst 제작":["Inst制作","Inst production"],
+"MatsuToki Studio 홈":["MatsuToki Studio ホーム","MatsuToki Studio home"],
+"One of only (5집 공모전 데모곡)":["One of only(5thアルバム公募デモ曲)","One of only (5th album contest demo)"],
+"PV · 티저":["PV・ティザー","PV · Teaser"],
+"Remix (개인작)":["Remix(個人作品)","Remix (personal)"],
+"YouTube에서 보기 ↗":["YouTubeで見る ↗","Watch on YouTube ↗"],
+"you — 쓰르라미 울적에 OST":["you — ひぐらしのなく頃に OST","you — Higurashi When They Cry OST"],
+"zip 파일":["zipファイル","Compress as a zip file"],
+"‹ 이전 곡":["‹ 前の曲","‹ Previous"],
+"✓ 포함":["✓ 含む","✓ Included"],
+"가능한 작업":["対応可能な作業","What I can do"],
+"견적 받기":["見積もり","Get a quote"],
+"결제 후 작업을 시작하고, 중간 결과물로 1차 · 2차 컨펌을 함께 진행해요.":["お支払い後に制作を開始し、途中経過で1次・2次確認を一緒に行います。","Work starts after payment, with 1st and 2nd review rounds on work-in-progress versions."],
+"곡 제목, 아티스트 검색":["曲名・アーティストで検索","Search songs or artists"],
+"곡과 레퍼런스(믹싱은 녹음본 · Inst)를 확인하고 금액과 일정을 알려드려요.":["曲とリファレンス(ミックスは録音データ・Inst)を確認し、料金と日程をお知らせします。","I review the song and references (for mixing: your recordings and Inst), then send a price and schedule."],
+"곡만 있으면 끝. 작곡부터 완성 음원까지 한 번에 맡기는 구성이에요.":["作曲から完成音源まで、まるごとお任せいただけるプランです。","Everything from composition to the finished master, in one package."],
+"구글 드라이브 링크":["Googleドライブのリンク","Google Drive link"],
+"구성 보기 →":["内容を見る →","See details →"],
+"금액은":["料金は","Prices are based on"],
+"기본가 기준":["基本料金基準","of base price"],
+"기본가 기준 · 기존 의뢰자 ×2.5":["基本料金基準・リピーター ×2.5","of base price · returning clients ×2.5"],
+"기초 보컬 믹싱":["ボーカルミックス基礎","Basic vocal mixing"],
+"길이 · 용도":["尺・用途","Length · Usage"],
+"너에게 (For you) Music Video":["너에게 (For you) Music Video","너에게 (For you) Music Video"],
+"녹음본 에디팅부터 믹싱 · 마스터링, 화음 가이드까지 보컬 작업이에요.":["録音データのエディットからミックス・マスタリング、ハモリガイドまでのボーカル作業です。","Vocal work — from editing your recordings to mixing, mastering and harmony guides."],
+"녹음본 포맷":["録音データの形式","Recording format"],
+"녹음본을 이렇게 보내주시면 작업이 훨씬 빠르고 정확해져요.":["この形式で録音データを送っていただくと、より早く正確に仕上がります。","Sending your recordings like this makes the work faster and more accurate."],
+"녹음할 때 이것만 챙겨주세요":["録音時のポイント","Recording tips"],
+"녹음해주세요. 가장 큰 부분이 빨간불(클리핑)에 닿지 않을 정도면 충분해요.":["録音してください。一番大きい部分がレッドゾーン(クリップ)に届かなければ大丈夫です。"," Make sure the loudest parts never hit the red (clipping)."],
+"누르면 패키지 이름이 적힌 문의 양식이 복사돼요.":["押すとパッケージ名入りの問い合わせフォームがコピーされます。","Copies the inquiry form with the package name filled in."],
+"다음 곡 ›":["次の曲 ›","Next ›"],
+"다음 페이지":["次のページ","Next page"],
+"다인원 합창":["多人数合唱","Group chorus"],
+"단가 분야":["料金カテゴリ","Price categories"],
+"닫기":["閉じる","Close"],
+"대표 작업물":["代表作品","Featured works"],
+"대회 · 콘서트 라이브 버전":["大会・ライブ用バージョン","Contest / live concert version"],
+"데뷔 PV · 티저 영상용 BGM":["デビューPV・ティザー映像用BGM","BGM for debut PVs and teasers"],
+"독점 사용권":["独占使用権","Exclusive rights"],
+"디스코드나 이메일로 문의 양식을 보내주세요. 간단한 설명만 있어도 괜찮아요.":["DiscordかメールでFormをお送りください。簡単な説明だけでも大丈夫です。","Send the inquiry form via Discord or email. A short description is fine too."],
+"레슨":["レッスン","Lessons"],
+"로 보내주세요.":["でお送りください。","."],
+"로 압축하거나":["に圧縮するか、"," or share a"],
+"를 함께 준비해요.":["を一緒にご用意ください。"," together."],
+"리버브 · 오토튠 · 컴프레서를 끈 원본(드라이) 녹음이 가장 좋아요.":["リバーブ・オートチューン・コンプをかけていない素の(ドライ)録音がベストです。","Dry recordings with no reverb, auto-tune or compression are best."],
+"리액션 인트로, 포즈 트랜지션 등 짧은 영상용 사운드.":["リアクションイントロ、ポーズトランジションなど短い映像用サウンド。","Short sounds for reaction intros, pose transitions and more."],
+"마감이 필요할 때 선택하는 옵션이에요. 가능 여부는 일정 확인 후 안내드려요.":["の納品が必要なときのオプションです。可否はスケジュール確認後にご案内します。"," delivery. Availability is confirmed after checking my schedule."],
+"마감일이 정해져 있으면 최대한 맞춰 드려요. 더 급하면 빠른 마감(1~2일) 옵션을 이용해주세요.":["締切がある場合はできる限り合わせます。お急ぎの場合は特急(1〜2日)オプションをご利用ください。","I'll do my best to meet your deadline. If it's urgent, use the rush option (1–2 days)."],
+"마리엘 생일 콘서트":["マリエル誕生日ライブ","Mariel birthday concert"],
+"마스터링":["マスタリング","Mastering"],
+"마츠토키 MatsuToki":["マツトキ MatsuToki","MatsuToki"],
+"마츠토키 프로필":["マツトキのプロフィール","MatsuToki profile"],
+"메인 · 화음 · 애드립은 트랙을 나눠서":["メイン・ハモリ・アドリブはトラックを分けて","Split main, harmony and ad-libs into separate tracks"],
+"메인 메뉴":["メインメニュー","Main menu"],
+"모든 금액은 비상업 · 방송 활동 기준 기본가예요. 곡 길이와 난이도에 따라 상담 후 최종 견적을 안내드려요.":["料金はすべて非商用・配信活動向けの基本料金(韓国ウォン)です。曲の長さや難易度に応じて、ご相談後に最終見積もりをお伝えします。海外からのご依頼のお支払い方法もご相談ください。","All prices are base rates for non-commercial / streaming use, in Korean won (KRW). Final quotes depend on length and difficulty. Clients outside Korea — payment methods are arranged during consultation."],
+"모든 작업 공통 양식":["全作業共通フォーム","One form for all requests"],
+"모든 작업물은 의뢰자분의 동의 하에 포트폴리오로 사용됩니다. 이전 노션 포트폴리오는":["すべての作品はご依頼者の同意のもと掲載しています。以前のNotionポートフォリオは","All works are shown with the clients' consent. The previous Notion portfolio is"],
+"모든 작업물은 포트폴리오로 사용될 수 있어요. 투고 후 링크를 보내 주시면 감사하겠습니다.":["制作物はポートフォリオとして掲載する場合があります。投稿後にリンクを送っていただけると嬉しいです。","Finished works may appear in my portfolio. I'd appreciate a link once it's posted."],
+"문의":["お問い合わせ","Contact"],
+"문의 1:1 Direct":["お問い合わせ 1:1 Direct","Contact 1:1 Direct"],
+"문의 남기기":["お問い合わせ","Get in touch"],
+"문의 양식":["お問い合わせフォーム","Inquiry form"],
+"문의 양식 복사":["フォームをコピー","Copy inquiry form"],
+"문의부터 전달까지의 순서예요. 진행 중에도 수정 사항은 언제든 말씀해 주세요.":["お問い合わせから納品までの流れです。制作中もいつでも修正をお伝えください。","How it works, from first message to delivery. Feel free to request changes at any point."],
+"문의하기":["お問い合わせ","Contact"],
+"문의하기 →":["お問い合わせ →","Contact →"],
+"문의하실 때 이 내용을 함께 보내주세요.":["お問い合わせの際はこちらの内容をお送りください。","Please include these details in your message."],
+"믹싱":["ミックス","Mixing"],
+"믹싱 + 마스터링만, 에디팅 제외 · 1인":["ミックス + マスタリングのみ(エディットなし)・1人","Mix + master only, no editing · 1 singer"],
+"믹싱 · 마스터링까지 한 번에?":["ミックス・マスタリングまでまとめて?","Want mixing & mastering too?"],
+"방송 후원 알림에 쓰는 짧은 효과음과 보이스예요.":["配信の投げ銭通知用の短い効果音とボイスです。","Short sound effects and voice lines for stream donation alerts."],
+"방송 후원 알림용 효과음 · 보이스":["投げ銭通知用 効果音・ボイス","Donation alert SFX · voice"],
+"방송용 BGM":["配信用BGM","Stream BGM"],
+"방송용 BGM · 인트로 · Inst":["配信用BGM・イントロ・Inst","Stream BGM · intros · Inst"],
+"배우고 싶은 분야와 수준에 맞춰 커리큘럼을 짜드려요.":["学びたい分野とレベルに合わせてカリキュラムを組みます。","The curriculum is tailored to what you want to learn and your level."],
+"보내는 방법":["送り方","How to send"],
+"보컬 믹스":["ボーカルミックス","Vocal mix"],
+"보컬 믹싱":["ボーカルミックス","Vocal mixing"],
+"보컬 믹싱 · 화음":["ボーカルミックス・ハモリ","Vocal mix · Harmony"],
+"보컬 믹싱 단가 보기 →":["ボーカルミックスの料金 →","Vocal mixing prices →"],
+"보컬 믹싱 의뢰 전 확인해주세요":["ボーカルミックスご依頼前のご確認","Before ordering a vocal mix"],
+"보컬 믹싱은 다른 작업보다 빠르게 진행돼요. 급한 일정은 당일 마감도 가능하니 문의주세요.":["ボーカルミックスは他の作業より早く仕上がります。お急ぎなら当日納品も可能ですのでご相談ください。","Vocal mixing is quicker than other work. Same-day delivery is possible for urgent requests — just ask."],
+"보컬 박자 · 음정 보정":["ボーカルのリズム・ピッチ補正","Vocal timing & pitch correction"],
+"보컬 트랙과":["ボーカルトラックと","Prepare your vocal tracks together with the"],
+"보통 1~3일":["通常1〜3日","Usually 1–3 days"],
+"보통 하루 안에, 늦어도 2일 안에 답변드려요.":["通常1日以内、遅くとも2日以内にお返事します。","I usually reply within a day, two at most."],
+"복사":["コピー","Copy"],
+"복사됨":["コピーしました","Copied"],
+"선택됨 · Ctrl+C":["選択済み · Ctrl+C","Selected · Ctrl+C"],
+"복사해서 채운 뒤 디스코드나 메일로 보내 주세요.":["コピーして記入し、Discordかメールでお送りください。","Copy it, fill it in, and send it via Discord or email."],
+"부터":["〜","from"],
+"분야 선택":["カテゴリを選択","Choose a category"],
+"분위기 · 요청사항":["雰囲気・ご要望","Mood · Requests"],
+"불가":["不可","No refund"],
+"빠른 마감":["特急オプション","Rush delivery"],
+"상업용 독점 라이선스":["商用独占ライセンス","Commercial exclusive license"],
+"상업적 사용":["商用利用","Commercial use"],
+"세션 연주, 라이브 공연, 합주용 악보가 필요할 때 함께 의뢰할 수 있어요.":["セッション演奏、ライブ、合奏用の譜面が必要なときにご依頼いただけます。","For session players, live shows or band rehearsals."],
+"소리가 깨지지 않게":["音割れしないように","Record cleanly without distortion."],
+"소스 전달이 어려우면 편하게 문의주세요. 친절히 설명드릴게요.":["データの送り方が分からなければお気軽にどうぞ。丁寧にご説明します。","Not sure how to send files? Just ask and I'll walk you through it."],
+"솔로곡 · 보컬 4트랙 기준":["ソロ曲・ボーカル4トラックまで","a solo song with up to 4 vocal tracks"],
+"수정 사항까지 반영한 최종 파일을 WAV로 전달드려요.":["修正を反映した最終ファイルをWAVでお渡しします。","You receive the final WAV with all revisions applied."],
+"수정 횟수 모두 사용 후":["修正回数をすべて使用後","After all revisions are used"],
+"수정, 자체 편곡, 재배포, 앨범 프레싱을 의뢰자분만 단독으로 사용할 수 있으며 제작자는 해당 곡을 다른 프로젝트에 쓰지 않습니다.":["修正、独自アレンジ、再配布、CDプレスをご依頼者様のみが行え、制作者は当該楽曲を他のプロジェクトに使用しません。","Only you may edit, rearrange, redistribute or press the track, and I won't use it in any other project."],
+"아기쥐작업소 × 마츠토키":["子ネズミ工房 × マツトキ","Agijwi Studio × MatsuToki"],
+"악보 · 리드시트":["譜面・リードシート","Sheet music · Lead sheet"],
+"악보 제작":["譜面制作","Sheet music"],
+"안내 사항":["ご案内","Notes"],
+"양식을 복사해서 채운 뒤 디스코드나 메일로 보내주시면 답변이 빨라져요. 모르는 항목은 비워두셔도 돼요.":["フォームをコピーして記入し、Discordかメールでお送りいただくと返信が早くなります。分からない項目は空欄で大丈夫です。","Copy the form, fill it in and send it via Discord or email for a faster reply. Leave anything you're unsure about blank."],
+"에디팅 · 믹싱 · 마스터링":["エディット・ミックス・マスタリング","Editing · Mixing · Mastering"],
+"에서 볼 수 있어요.":["からご覧いただけます。","."],
+"여기":["こちら","available here"],
+"열기 ↗":["開く ↗","Open ↗"],
+"영상 컷 타이밍에 맞춰 작곡해요.":["映像のカット割りに合わせて作曲します。","Composed to the cuts of your video."],
+"예: main_1.wav, harmony_high.wav":["例:main_1.wav、harmony_high.wav","e.g. main_1.wav, harmony_high.wav"],
+"예산 범위":["ご予算","Budget"],
+"예상 금액":["目安料金","Estimate"],
+"오리지널":["オリジナル","Original"],
+"오리지널 · BGM":["オリジナル・BGM","Original · BGM"],
+"오리지널 곡":["オリジナル曲","Original songs"],
+"오리지널 곡 제작":["オリジナル曲制作","Original song"],
+"오리지널 곡부터 방송용 BGM, 인트로, PV 음악까지 새로 만드는 작업이에요.":["オリジナル曲から配信用BGM、イントロ、PV音楽まで、ゼロから作る作業です。","New music made from scratch — original songs, stream BGM, intros and PV music."],
+"오리지널 풀패키지":["オリジナル フルパッケージ","Original full package"],
+"완성본 받기":["納品","Delivery"],
+"외주 단가":["料金表","Pricing"],
+"외주 작업은 편하게 문의 주세요.":["お仕事のご依頼はお気軽にどうぞ。","Commission inquiries are always welcome."],
+"외주단가":["料金表",""],
+"요청하시면 MP3도 함께 보내드려요.":["ご希望があればMP3もお送りします。","MP3 also available on request."],
+"원곡 · 레퍼런스 링크":["原曲・リファレンスのリンク","Original / reference link"],
+"원곡 퀄리티 그대로 Inst를 만들면 +30,000, 2인 · 3인 믹싱이면 인원에 따라 금액이 더해져요. 화음 가이드 등 추가 작업은 상담 후 안내드려요.":["原曲クオリティでInstを作る場合は+30,000、2人・3人ミックスは人数に応じて加算されます。ハモリガイドなどの追加作業はご相談後にご案内します。","Faithful-to-original Inst is +30,000; 2–3 singer mixes cost more per singer. Extras such as harmony guides are quoted on request."],
+"원곡 퀄리티 그대로 인스트 제작":["原曲クオリティそのままのInst制作","Inst faithful to the original"],
+"원하는 분위기 · 장르로 어레인지":["お好みの雰囲気・ジャンルでアレンジ","Arranged in your chosen mood / genre"],
+"위 단가는 기본 구성 기준이에요. 실제 금액은 곡 길이, 트랙 수, 난이도에 따라 상담 후 조율해요.":["上記は基本構成の料金です。実際の金額は曲の長さ、トラック数、難易度に応じてご相談のうえ決定します。","These are base prices. The final price depends on length, track count and difficulty, agreed after consultation."],
+"유튜브 인트로 · 아웃트로 (Loop) 사운드":["YouTubeのイントロ・アウトロ(ループ)サウンド","YouTube intro / outro (loop) sound"],
+"음원 판매, 굿즈 제작, 광고, 브랜드 협업, 게임 · 앱 삽입 등 수익이 발생하는 프로젝트.":["音源販売、グッズ、広告、ブランドコラボ、ゲーム・アプリへの使用など収益が発生するプロジェクト。","Music sales, merch, ads, brand collabs, games, apps — any project that earns revenue."],
+"음정 · 박자 보정(에디팅)만 · 1인 · 기존 고객":["ピッチ・リズム補正(エディット)のみ・1人・リピーター様","Pitch & timing correction only · 1 singer · returning clients"],
+"의뢰 가이드":["ご依頼ガイド","Ordering guide"],
+"의뢰 가이드 →":["ご依頼ガイド →","Ordering guide →"],
+"의뢰 전에 한 번 읽어보세요":["ご依頼前にぜひお読みください","Please read before ordering"],
+"이 구성으로 문의하기":["この内容で問い合わせる","Inquire about this package"],
+"이세계아이돌":["イセゲアイドル","ISEGYE IDOL"],
+"이에요. 트랙이 많거나 인원이 늘어나면 상담 후 안내드려요. 에디팅 없이 믹싱 · 마스터링만 맡기시면 할인된 금액으로 진행해요.":["です。トラック数や人数が多い場合はご相談後にご案内します。エディットなしでミックス・マスタリングのみの場合は割引料金になります。",". More tracks or singers are quoted after consultation. Mix & master without editing is discounted."],
+"이전 페이지":["前のページ","Previous page"],
+"이펙트 없이 보내주세요.":["エフェクトなしでお送りください。","Send without effects."],
+"인공화음 · 메인보컬 녹음본 소스로 제작":["人工ハモリ・メインボーカルの録音から制作","Artificial harmony from your main vocal"],
+"인트로 · 아웃트로":["イントロ・アウトロ","Intro · Outro"],
+"인트로 · 아웃트로 BGM":["イントロ・アウトロBGM","Intro / outro BGM"],
+"자주 함께 맡기시는 작업을 묶었어요. 눌러서 구성을 확인하세요.":["よく一緒にご依頼いただく作業をまとめました。押すと内容を確認できます。","Popular combinations bundled together. Tap to see what's included."],
+"작 · 편곡 1:1 강의":["作曲・編曲 1:1レッスン","1:1 composition & arrangement lessons"],
+"작곡":["作曲","Composition"],
+"작곡 · 편곡 (2~4분 풀사이즈)":["作曲・編曲(2〜4分フルサイズ)","Composition & arrangement (2–4 min full length)"],
+"작곡 · 편곡 · 리믹스 · 에디팅 · 믹싱 · 마스터링":["作曲・編曲・リミックス・エディット・ミックス・マスタリング","Composition · Arrangement · Remix · Editing · Mixing · Mastering"],
+"작곡 · 편곡 · 믹싱을 직접 배우고 싶은 분을 위한 1:1 수업이에요.":["作曲・編曲・ミックスを学びたい方のための1:1レッスンです。","1:1 lessons for anyone who wants to learn composing, arranging and mixing."],
+"작곡부터 탑라인, 화음 가이드, 보컬 보정, 믹싱 · 마스터링까지 한 번에":["作曲からトップライン、ハモリガイド、ボーカル補正、ミックス・マスタリングまでまとめて","Composition, topline, harmony guide, vocal tuning, mixing and mastering in one"],
+"작곡이 진행된 오리지널 곡에 편곡 (상업적 라이선스 포함)":["作曲済みのオリジナル曲の編曲(商用ライセンス込み)","Arrangement of an already-composed original (commercial license incl.)"],
+"작사와 가창은 포함되지 않아요. 곡 길이와 편성에 따라 금액이 달라질 수 있어요.":["作詞と歌唱は含まれません。曲の長さや編成により金額が変わる場合があります。","Lyrics and vocals are not included. Price may vary with length and instrumentation."],
+"작업 · 컨펌":["制作・確認","Production & review"],
+"작업 기간":["制作期間","Turnaround"],
+"작업 분야별로 작업물을 모아볼 수 있어요. 카드를 누르면 바로 재생돼요.":["カテゴリ別に作品をご覧いただけます。カードを押すとすぐ再生されます。","Browse works by category. Tap a card to play it right here."],
+"작업 시작 전":["制作開始前","Before work starts"],
+"작업 시작 후":["制作開始後","After work starts"],
+"작업 중 반영":["制作中に反映","During production"],
+"작업 환경":["制作環境","Gear"],
+"저작재산권 완전 양도(Buy-out)는 별도 문의 바랍니다.":["著作財産権の完全譲渡(買い取り)は別途ご相談ください。","For a full copyright buy-out, please inquire separately."],
+"저챗 · 대기화면 · 로딩화면용 Loop BGM":["雑談・待機画面・ローディング画面用ループBGM","Loop BGM for chatting, waiting and loading screens"],
+"전면 재작업이 필요한 경우 추가 비용이 발생할 수 있어요.":["全面的な作り直しが必要な場合は追加料金がかかることがあります。","A full redo may incur an additional fee."],
+"전체":["すべて","All"],
+"전체 작업물":["すべての作品","All works"],
+"전체 작업물 보기 →":["すべての作品を見る →","View all works →"],
+"주 4회 · 회당 1시간 30분 · 온라인 수업":["週4回・1回90分・オンライン","4× a week · 90 min each · online"],
+"진행 순서, 녹음본 포맷, 문의 양식을 한 페이지에 모아뒀어요.":["流れ、録音データ形式、お問い合わせフォームを1ページにまとめています。","Process, recording format and the inquiry form, all on one page."],
+"찾는 작업이 없거나 조합이 궁금하시면 편하게 물어보세요.":["お探しの作業がない場合や組み合わせのご相談もお気軽にどうぞ。","Don't see what you need, or want a custom combination? Just ask."],
+"총 5개 분야 · 눌러서 단가를 확인하세요":["全5カテゴリ・押すと料金を確認できます","5 categories · tap to see prices"],
+"카테고리 필터":["カテゴリフィルター","Category filter"],
+"커버 믹싱, MR · Inst 제작, BGM, 오리지널 곡 모두 이 양식 하나로 문의할 수 있어요. 링크가 있으면 상담이 훨씬 빨라져요.":["カバーのミックス、Inst制作、BGM、オリジナル曲まで、すべてこのフォームでお問い合わせいただけます。リンクがあるとご相談がスムーズです。","Use this single form for cover mixes, Inst, BGM and original songs. Including links speeds things up."],
+"커버곡 Inst + 믹싱 · 마스터링":["カバー曲 Inst + ミックス・マスタリング","Cover Inst + mix & master"],
+"커버곡 MR · 어레인지 (곡 길이 3분 내외 기준)":["カバー曲のInst・アレンジ(約3分の曲基準)","Cover instrumental / arrangement (based on ~3 min)"],
+"커버곡 MR 제작부터 보컬 믹싱 · 마스터링까지 한 번에":["カバー曲のInst制作からボーカルミックス・マスタリングまでまとめて","Cover instrumental plus vocal mixing & mastering in one"],
+"커버곡 MR을 새로 만들고, 녹음한 보컬까지 믹싱해 완성본으로 드려요.":["カバー曲のInstを新しく作り、録音したボーカルまでミックスして完成版をお渡しします。","A new instrumental for your cover, then your vocals mixed into a finished track."],
+"커버곡 MR을 새로 편곡하거나 원곡 그대로 만들고, 악보도 제작해요.":["カバー曲のInstを新アレンジまたは原曲通りに制作し、譜面も作ります。","Cover instrumentals — rearranged or faithful to the original — plus sheet music."],
+"커버곡 화음 제작과 화음 가이드":["カバー曲のハモリ制作とハモリガイド","Harmonies and harmony guides for covers"],
+"탑라인 (멜로디 라인)":["トップライン(メロディライン)","Topline (melody)"],
+"탑라인 제작":["トップライン制作","Topline writing"],
+"파일 이름에 파트를 적어주세요.":["ファイル名にパートを書いてください。","Name files by part."],
+"패키지":["パッケージ","Packages"],
+"퍼포먼스 인트로":["パフォーマンスイントロ","Performance intro"],
+"페이지":["ページ","Pages"],
+"편곡":["編曲","Arrangement"],
+"편곡 · 리믹스":["編曲・リミックス","Arrange · Remix"],
+"포트폴리오":["ポートフォリオ","Portfolio"],
+"포함 작업":["含まれる作業","Included"],
+"풀 커버":["フルカバー","Full cover"],
+"풀사이즈 오리지널 곡 제작 (2~4분)":["フルサイズオリジナル曲制作(2〜4分)","Full-length original song (2–4 min)"],
+"풀패키지 660,000 →":["フルパッケージ 660,000 →","Full package 660,000 →"],
+"필요한 작업":["必要な作業","Service needed"],
+"필요한 작업, 원하는 분위기와 레퍼런스, 희망 일정, 예산 범위를 알려 주시면 답변이 빨라져요. 모든 곡에 최선을 다하겠습니다.":["必要な作業、雰囲気やリファレンス、ご希望の日程、ご予算を教えていただけると返信が早くなります。すべての曲に全力で取り組みます。","Let me know the service, mood and references, timeline and budget for a faster reply. I put my best into every track."],
+"현재 위치":["現在地","Breadcrumb"],
+"현재 의뢰 가능":["現在ご依頼受付中","Open for commissions"],
+"홈":["ホーム",""],
+"화음 · 코러스":["ハモリ・コーラス","Harmony · Chorus"],
+"화음 가이드":["ハモリガイド","Harmony guide"],
+"화음 가이드 · 보컬로이드 활용 (가사 포함)":["ハモリガイド・ボカロ使用(歌詞あり)","Harmony guide · Vocaloid (with lyrics)"],
+"화음 가이드 · 원곡 메인보컬 소스 활용":["ハモリガイド・原曲メインボーカル使用","Harmony guide · from original main vocal"],
+"환불 규정":["返金規定","Refund policy"],
+"후렴 치기":["サビだけ","Chorus only"],
+"후렴 치기 (에디팅 포함)":["サビだけ(エディット込み)","Chorus only (editing incl.)"],
+"후원 애니메이션 + 효과음 + 보이스를 한 번에 챙겨가는 나만의 시그니처 후원 세트":["投げ銭アニメーション + 効果音 + ボイスをまとめた、あなただけのシグネチャーセット","Donation animation + SFX + voice — your own signature alert set"],
+"후원 효과음":["投げ銭効果音","Donation SFX"],
+"희망 일정":["ご希望の日程","Timeline"],
+};
+const I18N_FORM={ja:`[お問い合わせフォーム] 分からない項目は空欄で大丈夫です。
+
+- 活動名 / チャンネルURL:
+- 必要な作業(ミックス、Inst制作、BGM、オリジナル曲など):
+- 曲名・原曲またはリファレンスのリンク:
+- 雰囲気・ご要望:
+- 尺 / 用途(配信、カバー、商用など):
+- 参考資料(キャラクター設定、イラストなど):
+- ご希望の日程:
+- ご予算:`,en:`[Inquiry form] Leave anything you're unsure about blank.
+
+- Artist name / channel URL:
+- Service needed (mixing, Inst, BGM, original song, etc.):
+- Song title · original or reference link:
+- Mood · requests:
+- Length / usage (stream, cover, commercial, etc.):
+- References (character sheet, illustrations, etc.):
+- Timeline:
+- Budget:`};
+let LANG="ko";const I18N_ORIG=new WeakMap();
+const I18N_ATTR=["placeholder","aria-label","alt","title"];
+function trNode(n){if(!I18N_ORIG.has(n))I18N_ORIG.set(n,n.nodeValue);const o=I18N_ORIG.get(n);const t=o.trim();if(!t){return}
+ let r=null;const k=LANG==="ja"?0:1;
+ if(LANG!=="ko"){if(I18N[t]&&I18N[t][k]!=null)r=I18N[t][k];
+  else{let m;if(m=t.match(/^(\d+) \/ (\d+) 페이지$/))r=LANG==="ja"?`${m[1]} / ${m[2]} ページ`:`Page ${m[1]} of ${m[2]}`;
+   else if(m=t.match(/^([\d,]+)원$/))r=`₩${m[1]}`;}}
+ const v=r==null?o:o.replace(t,r);if(n.nodeValue!==v)n.nodeValue=v;}
+function trEl(root){if(root.nodeType===3){const p=root.parentElement;if(p&&!p.closest("script,style,pre,.lang-sw"))trNode(root);return}
+ if(root.nodeType!==1||root.closest&&root.closest("script,style"))return;
+ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const p=n.parentElement;if(p&&!p.closest("script,style,pre,.lang-sw"))trNode(n)}
+ const els=root.querySelectorAll?[root,...root.querySelectorAll("*")]:[];
+ els.forEach(e=>I18N_ATTR.forEach(a=>{if(!e.hasAttribute||!e.hasAttribute(a))return;const key="data-o-"+a;if(!e.hasAttribute(key))e.setAttribute(key,e.getAttribute(a));const o=e.getAttribute(key);const x=I18N[o];e.setAttribute(a,LANG!=="ko"&&x?x[LANG==="ja"?0:1]:o)}));}
+function setLang(l){LANG=l;document.documentElement.lang=l;try{localStorage.setItem("mt-lang",l)}catch(_){}
+ document.querySelectorAll(".lang-sw button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
+ const f=document.getElementById("f1");if(f){if(!f.dataset.ko)f.dataset.ko=f.textContent;f.textContent=l==="ko"?f.dataset.ko:I18N_FORM[l];}
+ trEl(document.body);}
+new MutationObserver(ms=>{if(LANG==="ko")return;for(const m of ms)m.addedNodes.forEach(trEl)}).observe(document.body,{childList:true,subtree:true});
+document.addEventListener("click",e=>{const b=e.target.closest(".lang-sw button");if(b)setLang(b.dataset.lang)});
+(()=>{let l=null;try{l=localStorage.getItem("mt-lang")}catch(_){}
+ if(!l){const n=(navigator.language||"ko").toLowerCase();l=n.startsWith("ja")?"ja":n.startsWith("ko")?"ko":"en"}
+ setLang(l)})();
 </script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2e72a419f5894aa299c9e2df9ebbcbdf"}'></script><!-- End Cloudflare Web Analytics -->
