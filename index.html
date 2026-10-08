@@ -107,6 +107,9 @@ section{padding-block:56px}
 .hero h1{font-size:clamp(40px,6vw,64px);font-weight:900;line-height:1;letter-spacing:-.02em}
 .hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .roles{margin:20px 0 0;font-size:17px;color:var(--muted);max-width:34em}
+.roles-en,.prof-body .roles-en{color:var(--ink);font-weight:500;letter-spacing:.01em}
+.roles-en .r{white-space:nowrap}
+.roles-en .amp{font-style:normal;color:var(--accent);font-weight:500;margin:0 .1em}
 .roles b{color:var(--ink);font-weight:600}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--ink);font-family:var(--body)}
@@ -520,7 +523,7 @@ footer .copy{letter-spacing:.08em}
         <div class="prof-body">
           <span class="eyebrow">Music Producer · Creator</span>
           <h1 class="logo-h"><img src="images/logo-en.webp" alt="MatsuToki" width="1200" height="220"></h1>
-          <p class="roles">작곡 · 편곡 · 리믹스 · 에디팅 · 믹싱 · 마스터링</p>
+          <p class="roles roles-en" aria-label="작곡 · 편곡 · 리믹스 · 에디팅 · 믹싱 · 마스터링">Composer <span class="r"><i class="amp">&amp;</i> Arranger</span> <span class="r"><i class="amp">&amp;</i> Remixer</span> <span class="r"><i class="amp">&amp;</i> Editor</span> <span class="r"><i class="amp">&amp;</i> Mixing</span> <span class="r"><i class="amp">&amp;</i> Mastering</span></p>
           <div class="btns">
             <a class="btn primary" href="#contact" data-go="contact">문의하기</a>
           </div>
