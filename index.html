@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="뮤직 프로듀서 마츠토키(MatsuToki)의 포트폴리오와 외주 · 커미션 안내">
 <title>MatsuToki Studio</title>
@@ -47,23 +48,8 @@ img{max-width:100%}
   --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --r:16px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0C1624; --surface:#122133; --sunk:#172A40;
-  --ink:#E7F0FA; --muted:#93A8BF; --line:#22374F;
-  --accent:#5AB1F2; --accent-ink:#8CCBFA; --accent-2:#6FD3DB;
-  --grad:linear-gradient(120deg,#3D9BE9 0%,#4FBCC7 100%);
-  --deep:linear-gradient(135deg,#143A66 0%,#1F5E9C 60%,#2F8FB0 100%);
-  --on-accent:#FFFFFF; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0C1624; --surface:#122133; --sunk:#172A40;
-  --ink:#E7F0FA; --muted:#93A8BF; --line:#22374F;
-  --accent:#5AB1F2; --accent-ink:#8CCBFA; --accent-2:#6FD3DB;
-  --grad:linear-gradient(120deg,#3D9BE9 0%,#4FBCC7 100%);
-  --deep:linear-gradient(135deg,#143A66 0%,#1F5E9C 60%,#2F8FB0 100%);
-  --on-accent:#FFFFFF; color-scheme:dark}
-
 *{box-sizing:border-box}
-body{background:var(--bg) linear-gradient(180deg,var(--sunk) 0,var(--bg) 520px) no-repeat;color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg) linear-gradient(180deg,#E6F2FF 0,var(--bg) 560px) no-repeat;color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
 h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;margin:0;letter-spacing:-.01em}
@@ -155,6 +141,17 @@ section{padding-block:56px}
 .stats dd{margin:0;font-size:14px}
 .stats b{font-family:var(--display);font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;margin-right:2px}
 @media (max-width:720px){.prof{grid-template-columns:1fr;gap:24px}.avatar{width:132px;border-radius:24px}}
+/* hero banner (artmug style) */
+.prof{background:var(--deep);border-radius:28px;padding:44px 52px;max-width:1080px;color:#fff;box-shadow:0 30px 60px -34px rgba(30,78,134,.55);position:relative;overflow:hidden}
+.prof::after{content:"";position:absolute;inset:auto -10% -60% 40%;height:120%;background:radial-gradient(closest-side,rgba(255,255,255,.14),transparent);pointer-events:none}
+.prof .avatar{border:0;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.prof .eyebrow{color:#CDE7FF}
+.prof-body .roles.roles-en{color:#fff}
+.prof .roles-en .amp{color:#9FE6EE}
+.prof .btn.primary{background:#fff;color:var(--accent-ink);box-shadow:0 10px 24px -12px rgba(0,0,0,.35)}
+.prof .btn.primary:hover{background:#F2F9FF}
+.prof .status{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff}
+@media (max-width:720px){.hero{padding-top:28px}.prof{padding:28px 22px;border-radius:22px}}
 /* service strip */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .svc{background:var(--surface);padding:22px;display:grid;gap:6px;align-content:start}
@@ -854,6 +851,7 @@ const W=[
  ["IBkkp87nG_E","리액션 아웃트로","수녕","intro"],
  ["2bHj0yH0-CE","스토리텔링 인트로 #칩튠 #드럼","유노유노","intro"],
  ["fuddLxkRwOk","데뷔 PV — 우주 택배 배달부, 루비비!","루비비","pv"],
+ ["ZiX6EIw2Gho","1.5 뉴젭이 Live2D 공개 트레일러","수젭이 sujebi","pv"],
  ["HqzMujM74wU","데뷔 PV","이세계 팥 김시루콩","pv"],
  ["5GUPStUSWhs","버츄얼 PV","루디아","pv"],
  ["J22ekUG3Qlw","[데뷔 티저] 멜로","멜로","pv"],
@@ -874,6 +872,7 @@ const W=[
  ["oCZEMrIGnFQ","히어로 (LUCY) COVER","히어로를 불러보았습니다!","guide"],
  ["g7My5jO9y3w","少女レイ (소녀 레이)","이토리 (Itori) Cover","guide"],
  ["HF2l9OgLOEQ","프로포즈 (プロポーズ)","선아린 COVER","guide"],
+ ["-BLkqk08Yz8","D/N/A","이토리 (Itori) Cover","guide"],
  ["qMyLkjUij4Q","愛言葉Ⅱ (사랑의 말Ⅱ)","이토리 Cover","guide"],
  ["XYK9LrlG0-k","괴수의 꽃노래 (怪獣の花唄)","디아푸 COVER","guide"],
  ["-cMcfk0855U","치지직 후원 효과음 1","아야세 테라","sfx"],
@@ -901,11 +900,14 @@ const W=[
  ["-h35oWtPpvE","Mercury","S.I.D-Sound","arr"],
  ["dc3gr3KdX7k","신시대 (新時代) — Inst arrange + mix","샤메이 COVER","arr"],
  ["bd5G2Lkw1bc","사이버펑크 OST 💚 — Cyberpunk 2077","UPI COVER","arr",1],
+ ["KYVqzNDmVmg","My Days — 영원한 7일의 도시 OST","리얼 REAL COVER","arr"],
  ["b2AwXQT9RQk","アイドル Cover — YOASOBI","꽃핀","mix"],
  ["gBpvYApAFfQ","바이, 썸머 (Bye Summer) — 아이유","옥우","mix"],
  ["ZV_0KbNA7xI","Catch You Catch Me","므엥이","mix"],
+ ["Sm7yde-H_oQ","PPPP — 쇼츠 커버 ✨","나츄 & 시네진","mix",1],
  ["hJxT9UZMJbM","DINOSAUR","므엥이","mix"],
  ["e8_qbmi6I1E","당신의 연인이 되고 싶어 (貴方の恋人になりたい) — ChoQMay","모푸","mix"],
+ ["9lU2AIar_4o","호랑풍류가 — 상록수 (feat. 나래)","Team.Sorane COVER : 4人","mix"],
  ["qC34fmrcMY0","모찌송","모푸","mix"],
  ["RUQlYQBA6Xc","SUPADOPA — 실시간 생일 콘서트","아야세 테라 with 모푸, 마리엘","mix"],
  ["Wu9YG1GH8nI","장산범","민네 & 카나프 & 헤라 & 모푸","mix"],
@@ -925,7 +927,7 @@ const url=w=>w[4]?`https://www.youtube.com/shorts/${w[0]}`:`https://youtu.be/${w
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* featured */
-const THUMB={"UXU3eF0Kpas":"images/thumbs/UXU3eF0Kpas.webp","bd5G2Lkw1bc":"images/thumbs/bd5G2Lkw1bc.webp","XYK9LrlG0-k":"images/thumbs/XYK9LrlG0-k.webp","sZjLu47zxLc":"images/thumbs/sZjLu47zxLc.webp","966tR3Kl38A":"images/thumbs/966tR3Kl38A.webp","6mfZH8YhTHs":"images/thumbs/6mfZH8YhTHs.webp","dnDU1CL2_dM":"images/thumbs/dnDU1CL2_dM.webp","ddlyawZLIQU":"images/thumbs/ddlyawZLIQU.webp","FFJ5mjoTHBs":"images/thumbs/FFJ5mjoTHBs.webp","jb4mt9SRVW8":"images/thumbs/jb4mt9SRVW8.webp","pzIWsp7cXJQ":"images/thumbs/pzIWsp7cXJQ.webp","HKGuAzNQSFo":"images/thumbs/HKGuAzNQSFo.webp","6UwzU3AEo2Y":"images/thumbs/6UwzU3AEo2Y.webp","2bHj0yH0-CE":"images/thumbs/2bHj0yH0-CE.webp","1-C6IpMM6Jk":"images/thumbs/1-C6IpMM6Jk.webp","6Rs9wGz4AqI":"images/thumbs/6Rs9wGz4AqI.webp","esaUFxciV9U":"images/thumbs/esaUFxciV9U.webp","sB8_EoVRW0E":"images/thumbs/sB8_EoVRW0E.webp","sdGyuPIBxGI":"images/thumbs/sdGyuPIBxGI.webp","MqFd3ztDyrU":"images/thumbs/MqFd3ztDyrU.webp","FT5mbpe8NBM":"images/thumbs/FT5mbpe8NBM.webp","oWZ-qcvoPws":"images/thumbs/oWZ-qcvoPws.webp","VY7NNS4OrJ8":"images/thumbs/VY7NNS4OrJ8.webp","Kx-mkxWdBhk":"images/thumbs/Kx-mkxWdBhk.webp","xExoE_KIJmE":"images/thumbs/xExoE_KIJmE.webp","9myPglvfqOQ":"images/thumbs/9myPglvfqOQ.webp","nzzl-A7YCVM":"images/thumbs/nzzl-A7YCVM.webp","oCZEMrIGnFQ":"images/thumbs/oCZEMrIGnFQ.webp","g7My5jO9y3w":"images/thumbs/g7My5jO9y3w.webp","HF2l9OgLOEQ":"images/thumbs/HF2l9OgLOEQ.webp","yYkGCaftMC0":"images/thumbs/yYkGCaftMC0.webp","qMyLkjUij4Q":"images/thumbs/qMyLkjUij4Q.webp","-cMcfk0855U":"images/thumbs/-cMcfk0855U.webp","ViVJopZBb5c":"images/thumbs/ViVJopZBb5c.webp","akqWQFtN57Y":"images/thumbs/akqWQFtN57Y.webp","eNmtYP_h9Rk":"images/thumbs/eNmtYP_h9Rk.webp","_jVdtxTcDx0":"images/thumbs/_jVdtxTcDx0.webp","nP3LxgJi0iQ":"images/thumbs/nP3LxgJi0iQ.webp","oVP3lIEDzkQ":"images/thumbs/oVP3lIEDzkQ.webp","KzXd8vfwziI":"images/thumbs/KzXd8vfwziI.webp","RUQlYQBA6Xc":"images/thumbs/RUQlYQBA6Xc.webp","Jqln6ZQlg3A":"images/thumbs/Jqln6ZQlg3A.webp","gBpvYApAFfQ":"images/thumbs/gBpvYApAFfQ.webp","ZV_0KbNA7xI":"images/thumbs/ZV_0KbNA7xI.webp","hJxT9UZMJbM":"images/thumbs/hJxT9UZMJbM.webp","e8_qbmi6I1E":"images/thumbs/e8_qbmi6I1E.webp","qC34fmrcMY0":"images/thumbs/qC34fmrcMY0.webp","IAmUau0WjW8":"images/thumbs/IAmUau0WjW8.webp","pKZZ5Iyj0hs":"images/thumbs/pKZZ5Iyj0hs.webp","nyRgPvFgSqc":"images/thumbs/nyRgPvFgSqc.webp","MpL1bpdKARs":"images/thumbs/MpL1bpdKARs.webp","6Lqvx3BqA8s":"images/thumbs/6Lqvx3BqA8s.webp","qyV3J7VfoqI":"images/thumbs/qyV3J7VfoqI.webp","8D4ZX0rCmt4":"images/thumbs/8D4ZX0rCmt4.webp","c693oY5xpAQ":"images/thumbs/c693oY5xpAQ.webp","FfCCKLXzQxA":"images/thumbs/FfCCKLXzQxA.webp","J_JEjqQRHyU":"images/thumbs/J_JEjqQRHyU.webp","NyIp28yS8c4":"images/thumbs/NyIp28yS8c4.webp","UMerb47--IE":"images/thumbs/UMerb47--IE.webp","00X2m5ilu3E":"images/thumbs/00X2m5ilu3E.webp","-h35oWtPpvE":"images/thumbs/-h35oWtPpvE.webp","tW4JpjG5oWA":"images/thumbs/tW4JpjG5oWA.webp","MnwH162aTBs":"images/thumbs/MnwH162aTBs.webp","bwZPktJ1ma0":"images/thumbs/bwZPktJ1ma0.webp","PP813SOA878":"images/thumbs/PP813SOA878.webp","NiXIUbSKQMk":"images/thumbs/NiXIUbSKQMk.webp","41RQ_GTN1VE":"images/thumbs/41RQ_GTN1VE.webp","Oazsa0UUEAs":"images/thumbs/Oazsa0UUEAs.webp","3zVP5VPqdvQ":"images/thumbs/3zVP5VPqdvQ.webp","oStPPiOYs2s":"images/thumbs/oStPPiOYs2s.webp","NHZ1MhSmi6k":"images/thumbs/NHZ1MhSmi6k.webp","I77rrR4fwSw":"images/thumbs/I77rrR4fwSw.webp","fuddLxkRwOk":"images/thumbs/fuddLxkRwOk.webp","J22ekUG3Qlw":"images/thumbs/J22ekUG3Qlw.webp","wNvICXnZLGE":"images/thumbs/wNvICXnZLGE.webp","tcoO_mVEfbw":"images/thumbs/tcoO_mVEfbw.webp","2jUMu0Do6i4":"images/thumbs/2jUMu0Do6i4.webp","HqzMujM74wU":"images/thumbs/HqzMujM74wU.webp","IBkkp87nG_E":"images/thumbs/IBkkp87nG_E.webp","mUXF9wp0B7k":"images/thumbs/mUXF9wp0B7k.webp","3dr4i3SBqok":"images/thumbs/3dr4i3SBqok.webp","ENuHczpOgEQ":"images/thumbs/ENuHczpOgEQ.webp","3DU3g-m21Rc":"images/thumbs/3DU3g-m21Rc.webp","YbStnlPuRIY":"images/thumbs/YbStnlPuRIY.webp","yPCPXbzU1-o":"images/thumbs/yPCPXbzU1-o.webp","ZBboBrd3Loc":"images/thumbs/ZBboBrd3Loc.webp","DFfynKo5WZM":"images/thumbs/DFfynKo5WZM.webp","5GUPStUSWhs":"images/thumbs/5GUPStUSWhs.webp","VxmxIsNhjt8":"images/thumbs/VxmxIsNhjt8.webp","tbNPwBrM7Ss":"images/thumbs/tbNPwBrM7Ss.webp","b2AwXQT9RQk":"images/thumbs/b2AwXQT9RQk.webp","Wu9YG1GH8nI":"images/thumbs/Wu9YG1GH8nI.webp","dc3gr3KdX7k":"images/thumbs/dc3gr3KdX7k.webp","c8UER63CkiI":"images/thumbs/c8UER63CkiI.webp","W6HPQLKkQ0Q":"images/thumbs/W6HPQLKkQ0Q.webp","LFaaMVnw2N8":"images/thumbs/LFaaMVnw2N8.webp","6QsDMyLJUKc":"images/thumbs/6QsDMyLJUKc.webp","NjD11vOkx5o":"images/thumbs/NjD11vOkx5o.webp","vfwBE_Sxts0":"images/thumbs/vfwBE_Sxts0.webp","v1P4Z__6kdg":"images/thumbs/v1P4Z__6kdg.webp","ZUceUkp0Wr8":"images/thumbs/ZUceUkp0Wr8.webp","aH7O77x-zhs":"images/thumbs/aH7O77x-zhs.webp","9ZdJfc-eZLM":"images/thumbs/9ZdJfc-eZLM.webp","ZTWxpGtdgz0":"images/thumbs/ZTWxpGtdgz0.webp","1WWFxG7_7Ok":"images/thumbs/1WWFxG7_7Ok.webp","MA_B7p8naS0":"images/thumbs/MA_B7p8naS0.webp",};
+const THUMB={"KYVqzNDmVmg":"images/thumbs/KYVqzNDmVmg.webp","Sm7yde-H_oQ":"images/thumbs/Sm7yde-H_oQ.webp","9lU2AIar_4o":"images/thumbs/9lU2AIar_4o.webp","ZiX6EIw2Gho":"images/thumbs/ZiX6EIw2Gho.webp","-BLkqk08Yz8":"images/thumbs/-BLkqk08Yz8.webp","UXU3eF0Kpas":"images/thumbs/UXU3eF0Kpas.webp","bd5G2Lkw1bc":"images/thumbs/bd5G2Lkw1bc.webp","XYK9LrlG0-k":"images/thumbs/XYK9LrlG0-k.webp","sZjLu47zxLc":"images/thumbs/sZjLu47zxLc.webp","966tR3Kl38A":"images/thumbs/966tR3Kl38A.webp","6mfZH8YhTHs":"images/thumbs/6mfZH8YhTHs.webp","dnDU1CL2_dM":"images/thumbs/dnDU1CL2_dM.webp","ddlyawZLIQU":"images/thumbs/ddlyawZLIQU.webp","FFJ5mjoTHBs":"images/thumbs/FFJ5mjoTHBs.webp","jb4mt9SRVW8":"images/thumbs/jb4mt9SRVW8.webp","pzIWsp7cXJQ":"images/thumbs/pzIWsp7cXJQ.webp","HKGuAzNQSFo":"images/thumbs/HKGuAzNQSFo.webp","6UwzU3AEo2Y":"images/thumbs/6UwzU3AEo2Y.webp","2bHj0yH0-CE":"images/thumbs/2bHj0yH0-CE.webp","1-C6IpMM6Jk":"images/thumbs/1-C6IpMM6Jk.webp","6Rs9wGz4AqI":"images/thumbs/6Rs9wGz4AqI.webp","esaUFxciV9U":"images/thumbs/esaUFxciV9U.webp","sB8_EoVRW0E":"images/thumbs/sB8_EoVRW0E.webp","sdGyuPIBxGI":"images/thumbs/sdGyuPIBxGI.webp","MqFd3ztDyrU":"images/thumbs/MqFd3ztDyrU.webp","FT5mbpe8NBM":"images/thumbs/FT5mbpe8NBM.webp","oWZ-qcvoPws":"images/thumbs/oWZ-qcvoPws.webp","VY7NNS4OrJ8":"images/thumbs/VY7NNS4OrJ8.webp","Kx-mkxWdBhk":"images/thumbs/Kx-mkxWdBhk.webp","xExoE_KIJmE":"images/thumbs/xExoE_KIJmE.webp","9myPglvfqOQ":"images/thumbs/9myPglvfqOQ.webp","nzzl-A7YCVM":"images/thumbs/nzzl-A7YCVM.webp","oCZEMrIGnFQ":"images/thumbs/oCZEMrIGnFQ.webp","g7My5jO9y3w":"images/thumbs/g7My5jO9y3w.webp","HF2l9OgLOEQ":"images/thumbs/HF2l9OgLOEQ.webp","yYkGCaftMC0":"images/thumbs/yYkGCaftMC0.webp","qMyLkjUij4Q":"images/thumbs/qMyLkjUij4Q.webp","-cMcfk0855U":"images/thumbs/-cMcfk0855U.webp","ViVJopZBb5c":"images/thumbs/ViVJopZBb5c.webp","akqWQFtN57Y":"images/thumbs/akqWQFtN57Y.webp","eNmtYP_h9Rk":"images/thumbs/eNmtYP_h9Rk.webp","_jVdtxTcDx0":"images/thumbs/_jVdtxTcDx0.webp","nP3LxgJi0iQ":"images/thumbs/nP3LxgJi0iQ.webp","oVP3lIEDzkQ":"images/thumbs/oVP3lIEDzkQ.webp","KzXd8vfwziI":"images/thumbs/KzXd8vfwziI.webp","RUQlYQBA6Xc":"images/thumbs/RUQlYQBA6Xc.webp","Jqln6ZQlg3A":"images/thumbs/Jqln6ZQlg3A.webp","gBpvYApAFfQ":"images/thumbs/gBpvYApAFfQ.webp","ZV_0KbNA7xI":"images/thumbs/ZV_0KbNA7xI.webp","hJxT9UZMJbM":"images/thumbs/hJxT9UZMJbM.webp","e8_qbmi6I1E":"images/thumbs/e8_qbmi6I1E.webp","qC34fmrcMY0":"images/thumbs/qC34fmrcMY0.webp","IAmUau0WjW8":"images/thumbs/IAmUau0WjW8.webp","pKZZ5Iyj0hs":"images/thumbs/pKZZ5Iyj0hs.webp","nyRgPvFgSqc":"images/thumbs/nyRgPvFgSqc.webp","MpL1bpdKARs":"images/thumbs/MpL1bpdKARs.webp","6Lqvx3BqA8s":"images/thumbs/6Lqvx3BqA8s.webp","qyV3J7VfoqI":"images/thumbs/qyV3J7VfoqI.webp","8D4ZX0rCmt4":"images/thumbs/8D4ZX0rCmt4.webp","c693oY5xpAQ":"images/thumbs/c693oY5xpAQ.webp","FfCCKLXzQxA":"images/thumbs/FfCCKLXzQxA.webp","J_JEjqQRHyU":"images/thumbs/J_JEjqQRHyU.webp","NyIp28yS8c4":"images/thumbs/NyIp28yS8c4.webp","UMerb47--IE":"images/thumbs/UMerb47--IE.webp","00X2m5ilu3E":"images/thumbs/00X2m5ilu3E.webp","-h35oWtPpvE":"images/thumbs/-h35oWtPpvE.webp","tW4JpjG5oWA":"images/thumbs/tW4JpjG5oWA.webp","MnwH162aTBs":"images/thumbs/MnwH162aTBs.webp","bwZPktJ1ma0":"images/thumbs/bwZPktJ1ma0.webp","PP813SOA878":"images/thumbs/PP813SOA878.webp","NiXIUbSKQMk":"images/thumbs/NiXIUbSKQMk.webp","41RQ_GTN1VE":"images/thumbs/41RQ_GTN1VE.webp","Oazsa0UUEAs":"images/thumbs/Oazsa0UUEAs.webp","3zVP5VPqdvQ":"images/thumbs/3zVP5VPqdvQ.webp","oStPPiOYs2s":"images/thumbs/oStPPiOYs2s.webp","NHZ1MhSmi6k":"images/thumbs/NHZ1MhSmi6k.webp","I77rrR4fwSw":"images/thumbs/I77rrR4fwSw.webp","fuddLxkRwOk":"images/thumbs/fuddLxkRwOk.webp","J22ekUG3Qlw":"images/thumbs/J22ekUG3Qlw.webp","wNvICXnZLGE":"images/thumbs/wNvICXnZLGE.webp","tcoO_mVEfbw":"images/thumbs/tcoO_mVEfbw.webp","2jUMu0Do6i4":"images/thumbs/2jUMu0Do6i4.webp","HqzMujM74wU":"images/thumbs/HqzMujM74wU.webp","IBkkp87nG_E":"images/thumbs/IBkkp87nG_E.webp","mUXF9wp0B7k":"images/thumbs/mUXF9wp0B7k.webp","3dr4i3SBqok":"images/thumbs/3dr4i3SBqok.webp","ENuHczpOgEQ":"images/thumbs/ENuHczpOgEQ.webp","3DU3g-m21Rc":"images/thumbs/3DU3g-m21Rc.webp","YbStnlPuRIY":"images/thumbs/YbStnlPuRIY.webp","yPCPXbzU1-o":"images/thumbs/yPCPXbzU1-o.webp","ZBboBrd3Loc":"images/thumbs/ZBboBrd3Loc.webp","DFfynKo5WZM":"images/thumbs/DFfynKo5WZM.webp","5GUPStUSWhs":"images/thumbs/5GUPStUSWhs.webp","VxmxIsNhjt8":"images/thumbs/VxmxIsNhjt8.webp","tbNPwBrM7Ss":"images/thumbs/tbNPwBrM7Ss.webp","b2AwXQT9RQk":"images/thumbs/b2AwXQT9RQk.webp","Wu9YG1GH8nI":"images/thumbs/Wu9YG1GH8nI.webp","dc3gr3KdX7k":"images/thumbs/dc3gr3KdX7k.webp","c8UER63CkiI":"images/thumbs/c8UER63CkiI.webp","W6HPQLKkQ0Q":"images/thumbs/W6HPQLKkQ0Q.webp","LFaaMVnw2N8":"images/thumbs/LFaaMVnw2N8.webp","6QsDMyLJUKc":"images/thumbs/6QsDMyLJUKc.webp","NjD11vOkx5o":"images/thumbs/NjD11vOkx5o.webp","vfwBE_Sxts0":"images/thumbs/vfwBE_Sxts0.webp","v1P4Z__6kdg":"images/thumbs/v1P4Z__6kdg.webp","ZUceUkp0Wr8":"images/thumbs/ZUceUkp0Wr8.webp","aH7O77x-zhs":"images/thumbs/aH7O77x-zhs.webp","9ZdJfc-eZLM":"images/thumbs/9ZdJfc-eZLM.webp","ZTWxpGtdgz0":"images/thumbs/ZTWxpGtdgz0.webp","1WWFxG7_7Ok":"images/thumbs/1WWFxG7_7Ok.webp","MA_B7p8naS0":"images/thumbs/MA_B7p8naS0.webp",};
 const LIVE=/(^|\.)matsutoki\.com$|netlify\.app$|^localhost$/.test(location.hostname);
 const thumb=id=>THUMB[id]||(LIVE?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:"");
 const FEAT=["ZTWxpGtdgz0","oStPPiOYs2s","3zVP5VPqdvQ","wNvICXnZLGE","b2AwXQT9RQk","9ZdJfc-eZLM"];
