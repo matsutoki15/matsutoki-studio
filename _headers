@@ -7,6 +7,3 @@
 
 /images/*
   Cache-Control: public, max-age=604800
-
-/artmug/*
-  Cache-Control: public, max-age=604800
